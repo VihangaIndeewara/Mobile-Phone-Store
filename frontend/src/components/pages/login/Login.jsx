@@ -14,34 +14,20 @@ import './Login.css';
 export const Login=()=>{
     return(
         <div  >
-               <div id='loginForm'>
+               <div id='loginForm' >
                 
-                <CssVarsProvider>
+                <CssVarsProvider >
                     <main>
-                        <Sheet
-                        sx={{
-                            width: 300,
-                            mx: 'auto', // margin left & right
-                            my: 4, // margin top & bottom
-                            py: 3, // padding top & bottom
-                            px: 2, // padding left & right
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: 2,
-                            borderRadius: 'sm',
-                            boxShadow: 'md',
-                        }}
-                        variant="outlined"
-                        >
+                        <br />
                         <div>
                             <Typography level="h4" component="h1">
-                            <b>Welcome!</b>
+                            <b class="text-white">Welcome!</b>
                             </Typography>
-                            <Typography level="body2">Log in to continue...</Typography>
+                            <Typography level="body2" ><h6 class="text-white">Log in to continue...</h6></Typography>
                         </div>
                         <br />
                         <FormControl>
-                            <FormLabel>Username</FormLabel>
+                            <FormLabel style={{color:"white"}}>Username</FormLabel>
                             <Input
                             // html input attribute
                             name="username"
@@ -49,8 +35,9 @@ export const Login=()=>{
                             placeholder="username"
                             />
                         </FormControl>
+                        <br />
                         <FormControl>
-                            <FormLabel>Password</FormLabel>
+                            <FormLabel style={{color:"white"}}>Password</FormLabel>
                             <Input
                             // html input attribute
                             name="password"
@@ -58,10 +45,12 @@ export const Login=()=>{
                             placeholder="password"
                             />
                         </FormControl>
+                        <br />
+                        <br />
 
-                        <Button sx={{ mt: 1 /* margin top */ }}>Log in</Button>
+                        <Button id='btnLogin'>Log in</Button>
                     
-                        </Sheet>
+
                     </main>
                 </CssVarsProvider>
                 </div>

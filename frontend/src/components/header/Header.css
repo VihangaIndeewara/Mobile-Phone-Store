@@ -1,0 +1,11 @@
+#mainNav{
+    position:"fixed";
+     width:"100vw";
+    background-color:#444645;
+    box-shadow: 3px 4px 16px 4px #444645;
+}
+#ShopName{
+    position: absolute;
+    top: 18px;
+    left: 90px;
+}
