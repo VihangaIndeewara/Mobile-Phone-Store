@@ -1,13 +1,13 @@
 export const Header=()=>{
     return(
+  
         <div>
-        <div>
-            <nav class="navbar navbar-expand-lg bg-dark bg-body-tertiary">
+            <nav class="navbar navbar-expand-lg bg-dark bg-body-tertiary" style={{position:"fixed", width:"100vw"}}>
             <div class="container-fluid">
                
 
                 <a class="navbar-brand" >
-                <img src="../assets/images/logo1.jpg" alt="Logo" width="50" height="50" class="d-inline-block align-text-center " style={{"margin-right": "20px"}}/>
+                <img src="../assets/images/logo1.jpg" alt="Logo" width="50" height="50" class="d-inline-block align-text-center " style={{marginRight: "20px"}}/>
                   Mobile Phone Store
                 </a>
 
@@ -28,6 +28,5 @@ export const Header=()=>{
             </nav>
         </div>
 
-    </div>
     );
 }
