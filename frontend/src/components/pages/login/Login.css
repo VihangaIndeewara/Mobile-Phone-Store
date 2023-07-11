@@ -18,15 +18,21 @@
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 
     background: linear-gradient(135deg, rgba(240, 240, 234, 0.13), rgba(223, 223, 220, 0.13));
-
 }
 
 #btnLogin{
     width:100%;
     background-color:#9C8090;
+    font-family: 'Pacifico', cursive;
 }
 
 #btnLogin:hover{
     background-color: #643851;
 }
+
+.headings{
+    font-family: 'Pacifico', cursive;
+    color: white;
+}
+
 

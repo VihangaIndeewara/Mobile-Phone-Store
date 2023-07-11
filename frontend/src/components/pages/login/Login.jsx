@@ -21,13 +21,13 @@ export const Login=()=>{
                         <br />
                         <div>
                             <Typography level="h4" component="h1">
-                            <b class="text-white">Welcome!</b>
+                            <b className='headings' >Welcome!</b>
                             </Typography>
-                            <Typography level="body2" ><h6 class="text-white">Log in to continue...</h6></Typography>
+                            <Typography level="body2" ><h6  className='headings'>Log in to continue...</h6></Typography>
                         </div>
                         <br />
                         <FormControl>
-                            <FormLabel style={{color:"white"}}>Username</FormLabel>
+                            <FormLabel><h6 className='headings'>Username</h6></FormLabel>
                             <Input
                             // html input attribute
                             name="username"
@@ -37,7 +37,7 @@ export const Login=()=>{
                         </FormControl>
                         <br />
                         <FormControl>
-                            <FormLabel style={{color:"white"}}>Password</FormLabel>
+                            <FormLabel><h6 className='headings'>Password</h6></FormLabel>
                             <Input
                             // html input attribute
                             name="password"
