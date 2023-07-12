@@ -87,7 +87,7 @@
 }
 
 .titleFirst{
-    margin-left: 60px;
+    margin-left: 80px;
     margin-top: 70px;
     margin-bottom: 0;
     font-family: 'Pacifico', cursive;
@@ -95,6 +95,33 @@
 }
 
 .titleSecond{
-    margin-left: 60px;
+    margin-left: 100px;
     font-family: 'Pacifico', cursive;
 }
+
+#tableDiv{
+  
+    width: 1200px;
+    height: 250px;
+    position: absolute;
+    top: 420px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#itemTable{
+
+    height: 100%;
+    width: 100%;
+    
+    background-color: rgb(250, 144, 6);
+    overflow-y: 'auto';
+}
+
+#mainDiv{
+    width: 98.9vw;
+    height: 720px;
+    background-color: antiquewhite;
+}
+

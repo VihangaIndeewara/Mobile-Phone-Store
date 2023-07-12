@@ -9,7 +9,7 @@ import { Item } from './components/pages/item/Item';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" >
      {/* <Header/>
      <Login/> 
      <Footer/>*/}

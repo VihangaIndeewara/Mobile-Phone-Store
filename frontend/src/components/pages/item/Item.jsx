@@ -1,9 +1,11 @@
 import { Header } from "../../header/Header";
+import {Footer} from "../../footer/Footer"
 import "../item/Item.css"
 
 export const Item=()=>{
     return(
         <div>
+            <div id="mainDiv">
             <Header>
                 <div id="navList">
                     <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
@@ -20,6 +22,7 @@ export const Item=()=>{
                      <button className="btnLogout" type="button"  >Log Out</button>
                {/* </Link> */}
             </Header>
+         
 
             <h1 className="titleFirst">Item </h1>
             <h1 className="titleSecond">Form</h1>
@@ -33,8 +36,8 @@ export const Item=()=>{
                         <input type="text" class="form-control inputField" id="mobileIdInput"/>
                     </div>
                     <div class="mb-3">
-                        <label for="mobileNameInput" class="form-label name">Mobile Name</label>
-                        <input type="text" class="form-control inputField" id="mobileNameInput"/>
+                        <label for="brandInput" class="form-label name">Brand</label>
+                        <input type="text" class="form-control inputField" id="brandInput"/>
                     </div>
                     <div class="mb-3 ">
                     <label for="mobileColorInput" class="form-label name">Mobile Color</label>
@@ -61,59 +64,63 @@ export const Item=()=>{
                  </div>
             </form>
             </div>
-            
-{/* 
-            <form id="itemInputForm">
-            <br/>
-            <div className="divFirst">
-                <div className="divFirstChild">
-                    <label className="name" htmlFor='mobileId'>Mobile Id</label>
-                    <br />
-                    <input type="text" id='mobileId' name='mobileId' value={mobileId} />
-                </div>
 
-                <div className="divFirstChild">
-                    <label className="name" htmlFor='bookTitle'>Mobile Name</label>
-                    <br />
-                    <input type="text" id='bookTitle' name='bookTitle' value={bookTitle} onChange={(e)=>{setBookTitle(e.target.value)}} />
-                </div>
 
-                <div className="divFirstChild">
-                    <label className="name" htmlFor='bookAuthor'>Author</label>
-                    <br />
-                    <input type="text" id='bookAuthor'name='bookAuthor' value={bookAuthor} onChange={(e)=>{setBookAuthor(e.target.value)}}/>
-                </div>
+            <div id="tableDiv">
+                <table class="table table-striped" id="itemTable">
+                    <thead >
+                        <tr class="table-dark">
+                        <th scope="col">Mobile ID</th>
+                        <th scope="col">Brand</th>
+                        <th scope="col">Color</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Unit Price</th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        <tr>
+                            <td scope="row">M001</td>
+                            <td>Samsung S5</td>
+                            <td>Black</td>
+                            <td>12</td>
+                            <td>36000</td>
+                        </tr>
+                        <tr>
+                            <td>M001</td>
+                            <td>Samsung S5</td>
+                            <td>Black</td>
+                            <td>12</td>
+                            <td>36000</td>
+                        </tr>
+                        <tr>
+                            <td>M001</td>
+                            <td>Samsung S5</td>
+                            <td>Black</td>
+                            <td>12</td>
+                            <td>36000</td>
+                        </tr>
+                        <tr>
+                            <td>M001</td>
+                            <td>Samsung S5</td>
+                            <td>Black</td>
+                            <td>12</td>
+                            <td>36000</td>
+                        </tr>
+                        <tr>
+                            <td>M001</td>
+                            <td>Samsung S5</td>
+                            <td>Black</td>
+                            <td>12</td>
+                            <td>36000</td>
+                        </tr>
+          
+                
 
-           </div>
-           <br/>
-
-           <div className="divFirst">
-                <div className="divSecondChild">
-                   <label className="name" htmlFor='bookLanguage'>Language</label>
-                    <br />
-                    <input type="text" id='bookLanguage' name='bookLanguage' value={bookLanguage} onChange={(e)=>{setBookLanguage(e.target.value)}}/>
-                </div>
-
-                <div className="divSecondChild">
-                    <label className="name" htmlFor='bookPrice'>Price</label>
-                    <br />
-                    <input type="text" id='bookPrice' name='bookPrice' value={bookPrice} onChange={(e)=>{setBookPrice(e.target.value)}}/>
-                </div>
-            </div>    
-
-            <br/>
-            <br/>
-
-            <div id="btnGroup">
-                <button id="btnSave" type="button" onClick={saveBook}>Save</button>
-           
-                <button id="btnUpdate" type="button" onClick={updateBook}>Update</button>
-            
-                <button id="btnDelete" type="button" onClick={deleteBook}>Delete</button>
+                    </tbody>
+                </table>
             </div>
-           </form> */}
-           <br/>
-
+            </div>
+  
         </div>
     );
 }
