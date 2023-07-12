@@ -10,3 +10,33 @@
     left: 90px;
     font-family: 'Kaushan Script', cursive;
 }
+
+.btnLogout{
+    background-color: #EA3B28;
+    border: none;
+    width: 120px;
+    height: 25px;
+    border-radius: 10px;
+    position: absolute;
+    top: 27px;
+    right: 50px;
+    color: white;
+    cursor: pointer;
+    font-family: 'Pacifico', cursive;
+}
+
+#navList{
+
+   right: 300px;
+   position: absolute;
+   
+}
+
+.navItem{
+    color: white;
+    margin-right: 20px;
+}
+
+.navItem:hover{
+    color: aqua;
+}
