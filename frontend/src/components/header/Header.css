@@ -35,6 +35,9 @@
 .navItem{
     color: white;
     margin-right: 20px;
+    font-family: 'Roboto Slab', serif;
+    text-decoration: none;
+    font-size: 15px;
 }
 
 .navItem:hover{
