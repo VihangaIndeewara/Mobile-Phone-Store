@@ -1,0 +1,100 @@
+#itemInputForm{
+    background-color: white;
+    width: 850px;
+    height: 210px;
+    position: absolute;
+    top: 150px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    
+    background: linear-gradient(135deg, #535151, #ECEDEE);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 0, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+    background: linear-gradient(135deg, rgba(240, 240, 234, 0.13), rgba(223, 223, 220, 0.13));
+
+}
+
+#btnSave {
+    background-color: green;
+    color: white;
+    border-radius: 20px;
+    width: 80px;
+    height: 30px;
+    margin-left: 10px;
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+}
+
+#btnUpdate {
+    background-color: darkgoldenrod;
+    color: white;
+   border-radius: 20px;
+    width: 80px;
+    height: 30px;
+    margin-left: 10px;
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+}
+
+#btnDelete {
+    background-color: rgb(221, 20, 20);
+    color: white;
+    border-radius: 20px;
+    width: 80px;
+    height: 30px;
+    margin-left: 10px;
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+}
+
+.divFirst{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+}
+
+.divFirstChild{
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#btnGroup{
+
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    gap: 30px;
+    
+}
+
+.inputField{
+    height: 25px;
+    
+}
+.name{
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.titleFirst{
+    margin-left: 60px;
+    margin-top: 70px;
+    margin-bottom: 0;
+    font-family: 'Pacifico', cursive;
+
+}
+
+.titleSecond{
+    margin-left: 60px;
+    font-family: 'Pacifico', cursive;
+}

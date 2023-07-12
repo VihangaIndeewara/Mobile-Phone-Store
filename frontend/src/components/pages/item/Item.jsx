@@ -1,4 +1,5 @@
 import { Header } from "../../header/Header";
+import "../item/Item.css"
 
 export const Item=()=>{
     return(
@@ -20,30 +21,45 @@ export const Item=()=>{
                {/* </Link> */}
             </Header>
 
+            <h1 className="titleFirst">Item </h1>
+            <h1 className="titleSecond">Form</h1>
+
             <div>
             <form id="itemInputForm">
-                <div class="mb-3">
-                    <label for="mobileIdInput" class="form-label">Mobile ID</label>
-                    <input type="text" class="form-control" id="mobileIdInput"/>
+                <br />
+                <div className="divFirst">
+                    <div class="mb-3">
+                        <label for="mobileIdInput" class="form-label name">Mobile ID</label>
+                        <input type="text" class="form-control inputField" id="mobileIdInput"/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="mobileNameInput" class="form-label name">Mobile Name</label>
+                        <input type="text" class="form-control inputField" id="mobileNameInput"/>
+                    </div>
+                    <div class="mb-3 ">
+                    <label for="mobileColorInput" class="form-label name">Mobile Color</label>
+                        <input type="text" class="form-control inputField" id="mobileColorInput"/>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="mobileNameInput" class="form-label">Mobile Name</label>
-                    <input type="text" class="form-control" id="mobileNameInput"/>
-                </div>
-                <div class="mb-3 ">
-                <label for="mobileColorInput" class="form-label">Mobile Color</label>
-                    <input type="text" class="form-control" id="mobileColorInput"/>
-                </div>
-                <div class="mb-3 ">
-                <label for="mobileQtyInput" class="form-label">Qty</label>
-                    <input type="text" class="form-control" id="mobileQtyInput"/>
-                </div>
-                <div class="mb-3 ">
-                <label for="mobileUnitPriceInput" class="form-label">Unit Price</label>
-                    <input type="text" class="form-control" id="mobileUnitPriceInput"/>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+                <div className="divFirst">
+                    <div class="mb-3 ">
+                    <label for="mobileQtyInput" class="form-label name">Qty</label>
+                        <input type="text" class="form-control inputField" id="mobileQtyInput"/>
+                    </div>
+                    <div class="mb-3 ">
+                    <label for="mobileUnitPriceInput" class="form-label name">Unit Price</label>
+                        <input type="text" class="form-control inputField" id="mobileUnitPriceInput"/>
+                    </div>
+                </div>  
+         
+                <div id="btnGroup">
+                    <button id="btnSave" type="button">Save</button>
+            
+                    <button id="btnUpdate" type="button" >Update</button>
+                
+                    <button id="btnDelete" type="button" >Delete</button>
+                 </div>
+            </form>
             </div>
             
 {/* 
