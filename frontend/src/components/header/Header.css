@@ -25,6 +25,11 @@
     font-family: 'Pacifico', cursive;
 }
 
+.btnLogout:hover{
+    width: 122px;
+    height: 27px;
+}
+
 #navList{
 
    right: 300px;

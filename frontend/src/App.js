@@ -5,6 +5,7 @@ import { Header } from './components/header/Header';
 import { Login } from './components/pages/login/Login';
 import { Footer } from './components/footer/Footer';
 import { Item } from './components/pages/item/Item';
+import { Order } from './components/pages/order/Order';
 
 
 function App() {
@@ -14,9 +15,7 @@ function App() {
      <Login/> 
      <Footer/>*/}
      {/* <Item/> */}
-     <Header/>
-     <Login/> 
-     
+     <Order/>
     </div>
   );
 }
