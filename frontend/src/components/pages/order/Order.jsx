@@ -164,7 +164,56 @@ export const Order=()=>{
 
 
 
-     
+        <div>
+            <button id="btnNewCustomer" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#customerRegistrationModal" >+ New Customer</button>
+
+
+                <div class="modal  modal-dialog modal-lg  " id="customerRegistrationModal" tabindex="-10" aria-labelledby="customerRegistration"  aria-hidden="true" >
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header " style={{background: "#3A4D85", color: "white",height:"50px"}}>
+                                <h5 class="modal-title" id="saveModalTitle" style={{fontSize:"14px"}}>Add New Customer</h5>
+                            </div>
+
+                            <form id="customerRegistrationForm">
+                                <div class="modal-body  row">
+
+                                    <div class="mb-3 col">
+                                        <label for="customerIDInput" class="form-label name">Customer Id</label>
+                                        <input type="text" class="form-control inputField" id="customerIDInput" placeholder="Ex:- C001" name="customerID" />
+                                        <span class="control-error"></span>
+                                    </div>
+                                    <div class="mb-3 col">
+                                        <label for="nameInput" class="form-label name">Name</label>
+                                        <input type="text" class="form-control inputField" id="nameInput" placeholder="Ex:- Kamal Perera" name="customerName"/>
+                                        <span class="control-error"></span>
+                                    </div>
+                                    <div class="mb-3 col">
+                                        <label for="contactNoInput" class="form-label name">Contact No</label>
+                                        <input type="text" class="form-control inputField" id="contactNoInput" placeholder="Ex:- +94714202287" name="customerContactNo"/>
+                                        <span class="control-error"></span>
+                                    </div>
+                                </div>
+                           
+
+                                <div class="modal-body  row" style={{paddingTop:0}}>
+                                <div class="mb-3 col">
+                                        <label for="addressInput" class="form-label name">Address</label>
+                                        <input type="text" class="form-control inputField" id="addressInput" placeholder="Ex:-61/4A, Galle Rd, Panadura" name="customerAddress"/>
+                                        <span class="control-error"></span>
+                                    </div>
+
+                           
+                                </div>
+                            </form>
+                            <div class="modal-footer">
+                                <button id="saveCusButton" type="button" class="btn btn-success btn-sm" style={{width: "150px"}}>Save</button>
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
         </div>
     )
 }

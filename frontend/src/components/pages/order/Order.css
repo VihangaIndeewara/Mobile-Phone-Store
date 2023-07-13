@@ -143,3 +143,27 @@
     background-color: #406287;
 }
 
+#btnNewCustomer{
+    width: 80px;
+    height:50px;
+    background-color: #c0ae0a;
+
+    border: none;
+    position: absolute;
+    left: 565px;
+    top: 160px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#btnNewCustomer:hover{
+    background-color:#978908 ;
+}
+
+#customerRegistrationModal{
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    left: 0; 
+    bottom: 0;
+}
