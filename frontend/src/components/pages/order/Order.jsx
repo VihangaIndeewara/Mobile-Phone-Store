@@ -47,6 +47,9 @@ export const Order=()=>{
                     </div>          
             </form>
 
+            <button id="btnNewCustomer" type="button" class="btn btn-success"> + New Customer</button>
+                
+
             <form id="itemSelectForm">
                 <br />
                 <div className="divFirst">
@@ -92,8 +95,9 @@ export const Order=()=>{
                  </div>
             </form>
 
-
             <div id="cartTableDiv">
+            <br />
+
                 <table class="table table-striped" id="cartItemTable">
                     <thead >
                         <tr class="table-dark">
@@ -153,6 +157,14 @@ export const Order=()=>{
                 <label id="totLable">Total : </label>
                 <h1 id="totAmount">0.00</h1>
             </div>
+
+            
+            <button id="btnPlaceOrder" type="button" class="btn btn-success">Place Order</button>
+                
+
+
+
+     
         </div>
     )
 }

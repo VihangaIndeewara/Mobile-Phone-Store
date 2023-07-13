@@ -8,7 +8,7 @@
     height: 250px;
     position: absolute;
     top: 150px;
-    left: 300px;
+    left: 250px;
     padding: 0px;
     
 
@@ -65,7 +65,7 @@
 }
 
 #btnAddToCart{
-    background-color: #5f5b51;
+    background-color: #135FB2;
     color: white;
    border-radius: 20px;
     width: 120px;
@@ -127,6 +127,19 @@
     display: inline-block;
     margin-left: 15px;
     width: 250px;
- 
+}
+
+#btnPlaceOrder{
+    bottom: 100px;
+    position: absolute;
+    right: 200px;
+    height: 60px;
+    width: 150px;
+    background-color: #0085B2;
+    font-weight: bold;
+}
+
+#btnPlaceOrder:hover{
+    background-color: #406287;
 }
 

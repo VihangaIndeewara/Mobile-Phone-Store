@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
 import { Header } from './components/header/Header';
 import { Login } from './components/pages/login/Login';
 import { Footer } from './components/footer/Footer';
