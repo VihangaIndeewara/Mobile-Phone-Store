@@ -5,7 +5,7 @@
 
 #customerInputForm{
     width: 300px;
-    height: 240px;
+    height: 250px;
     position: absolute;
     top: 150px;
     left: 300px;
@@ -24,9 +24,27 @@
 
 #itemSelectForm{
     width: 700px;
-    height: 240px;
+    height: 170px;
     position: absolute;
     top: 150px;
+    left: 680px;
+    padding: 0px;
+    
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 0, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+    background: linear-gradient(135deg, #c6cbce, rgba(223, 223, 220, 0.13));
+}
+
+#qtyInputForm{
+    width: 700px;
+    height: 70px;
+    position: absolute;
+    top: 330px;
     left: 680px;
     padding: 0px;
     
@@ -56,10 +74,59 @@
     cursor: pointer;
     border: none;
     font-size: 14px;
-    margin-top: 10px;
+    margin-top: 19px;
     font-weight: bold;
 }
 
 #btnAddToCart:hover{
     background-color: #52565F;
 }
+
+#cartTableDiv{
+    width: 900px;
+    height: 250px;
+    position: absolute;
+    top: 420px;
+    left: 200px;
+
+}
+
+#cartItemTable{
+
+    height: 100%;
+    width: 100%;
+    
+    background-color: rgb(250, 144, 6);
+    overflow-y: 'auto';
+}
+
+#mobileQtyInput{
+    width: 100px;
+}
+
+#totDiv{
+    position: absolute;
+    bottom: 190px;
+    left: 1150px;
+
+}
+
+#totLable{
+    font-size: 35px;
+    font-weight: bold;
+    color: rgb(223, 15, 15);
+    font-family: 'Roboto Slab', serif;
+  
+
+}  
+
+#totAmount{
+    font-size: 35px;
+    font-weight: bold;
+    font-family: 'Roboto Slab', serif;
+    display: inline-block;
+    margin-left: 15px;
+    width: 250px;
+ 
+}
+

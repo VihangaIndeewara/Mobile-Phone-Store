@@ -75,16 +75,83 @@ export const Order=()=>{
                     <label for="mobileUnitPriceInput" class="form-label name">Unit Price</label>
                         <input type="text" class="form-control inputField" id="mobileUnitPriceInput" disabled/>
                     </div>
-                </div>  
+                    
+                </div>
+            </form>
+
+            <form id="qtyInputForm">
+            <div className="divFirst">
+                <div class="mb-3 ">
+                    <label for="mobileQtyInput" class="form-label name">Qty</label>
+                        <input type="number" class="form-control inputField" id="mobileQtyInput" />
+                    </div>
          
                 <div id="btnGroup">
                     <button id="btnAddToCart" type="button">Add to Cart</button>
-            
-               
+                 </div>
                  </div>
             </form>
 
 
+            <div id="cartTableDiv">
+                <table class="table table-striped" id="cartItemTable">
+                    <thead >
+                        <tr class="table-dark">
+                        <th scope="col">Mobile ID</th>
+                        <th scope="col">Brand</th>
+                        <th scope="col">Color</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Unit Price</th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        <tr>
+                            <td scope="row">M001</td>
+                            <td>Samsung S5</td>
+                            <td>Black</td>
+                            <td>12</td>
+                            <td>36000</td>
+                        </tr>
+                        <tr>
+                            <td>M001</td>
+                            <td>Samsung S5</td>
+                            <td>Black</td>
+                            <td>12</td>
+                            <td>36000</td>
+                        </tr>
+                        <tr>
+                            <td>M001</td>
+                            <td>Samsung S5</td>
+                            <td>Black</td>
+                            <td>12</td>
+                            <td>36000</td>
+                        </tr>
+                        <tr>
+                            <td>M001</td>
+                            <td>Samsung S5</td>
+                            <td>Black</td>
+                            <td>12</td>
+                            <td>36000</td>
+                        </tr>
+                        <tr>
+                            <td>M001</td>
+                            <td>Samsung S5</td>
+                            <td>Black</td>
+                            <td>12</td>
+                            <td>36000</td>
+                        </tr>
+          
+                
+
+                    </tbody>
+                </table>
+                </div>
+
+            </div>
+
+            <div id="totDiv">
+                <label id="totLable">Total : </label>
+                <h1 id="totAmount">0.00</h1>
             </div>
         </div>
     )
