@@ -8,6 +8,7 @@ import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
 import Link from '@mui/joy/Link';
 import './Login.css';
+import { Footer } from '../../footer/Footer';
 
 
 
@@ -56,7 +57,7 @@ export const Login=()=>{
                 </div>
                 <img id='backgroundImage' src="../assets/images/loginBackground.jpg" alt="backgroundImage" />
          
-           
+           <Footer/>
         </div>
         
     );

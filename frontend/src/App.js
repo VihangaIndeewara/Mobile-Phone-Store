@@ -13,7 +13,10 @@ function App() {
      {/* <Header/>
      <Login/> 
      <Footer/>*/}
-     <Item/>
+     {/* <Item/> */}
+     <Header/>
+     <Login/> 
+     
     </div>
   );
 }
