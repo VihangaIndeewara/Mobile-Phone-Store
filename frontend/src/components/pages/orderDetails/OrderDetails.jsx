@@ -3,7 +3,7 @@ import { Header } from "../../header/Header"
 
 export const OrderDetails=()=>{
     return(
-        <div id="OrderDetailsMainDiv">
+        <div className="OrderDetailsMainDiv">
             <Header>
                 <div id="navList">
                     <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
@@ -102,107 +102,6 @@ export const OrderDetails=()=>{
                             <td>17.08</td>
                         </tr>
           
-                        <tr>
-                            <td scope="row">OR001</td>
-                            <td>C001</td>
-                            <td>M001</td>
-                            <td>Samsung S5</td>
-                            <td>1</td>
-                            <td>36000</td>
-                            <td>2023-07-13</td>
-                            <td>17.08</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">OR001</td>
-                            <td>C001</td>
-                            <td>M001</td>
-                            <td>Samsung S5</td>
-                            <td>1</td>
-                            <td>36000</td>
-                            <td>2023-07-13</td>
-                            <td>17.08</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">OR001</td>
-                            <td>C001</td>
-                            <td>M001</td>
-                            <td>Samsung S5</td>
-                            <td>1</td>
-                            <td>36000</td>
-                            <td>2023-07-13</td>
-                            <td>17.08</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">OR001</td>
-                            <td>C001</td>
-                            <td>M001</td>
-                            <td>Samsung S5</td>
-                            <td>1</td>
-                            <td>36000</td>
-                            <td>2023-07-13</td>
-                            <td>17.08</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">OR001</td>
-                            <td>C001</td>
-                            <td>M001</td>
-                            <td>Samsung S5</td>
-                            <td>1</td>
-                            <td>36000</td>
-                            <td>2023-07-13</td>
-                            <td>17.08</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">OR001</td>
-                            <td>C001</td>
-                            <td>M001</td>
-                            <td>Samsung S5</td>
-                            <td>1</td>
-                            <td>36000</td>
-                            <td>2023-07-13</td>
-                            <td>17.08</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">OR001</td>
-                            <td>C001</td>
-                            <td>M001</td>
-                            <td>Samsung S5</td>
-                            <td>1</td>
-                            <td>36000</td>
-                            <td>2023-07-13</td>
-                            <td>17.08</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">OR001</td>
-                            <td>C001</td>
-                            <td>M001</td>
-                            <td>Samsung S5</td>
-                            <td>1</td>
-                            <td>36000</td>
-                            <td>2023-07-13</td>
-                            <td>17.08</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">OR001</td>
-                            <td>C001</td>
-                            <td>M001</td>
-                            <td>Samsung S5</td>
-                            <td>1</td>
-                            <td>36000</td>
-                            <td>2023-07-13</td>
-                            <td>17.08</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">OR001</td>
-                            <td>C001</td>
-                            <td>M001</td>
-                            <td>Samsung S5</td>
-                            <td>1</td>
-                            <td>36000</td>
-                            <td>2023-07-13</td>
-                            <td>17.08</td>
-                        </tr>
-                
 
                     </tbody>
                 </table>
