@@ -7,6 +7,7 @@ import { Login } from './components/pages/login/Login';
 import { Footer } from './components/footer/Footer';
 import { Item } from './components/pages/item/Item';
 import { Order } from './components/pages/order/Order';
+import { OrderDetails } from './components/pages/orderDetails/OrderDetails';
 
 
 function App() {
@@ -16,7 +17,8 @@ function App() {
      <Login/> 
      <Footer/>*/}
      {/* <Item/> */}
-     <Order/>
+     {/* <Order/> */}
+    <OrderDetails/>
     </div>
   );
 }
