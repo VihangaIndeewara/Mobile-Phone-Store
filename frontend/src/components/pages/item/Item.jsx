@@ -46,8 +46,8 @@ export const Item=()=>{
                 </div>
                 <div className="divFirst">
                     <div class="mb-3 ">
-                    <label for="mobileQtyInput" class="form-label name">Qty</label>
-                        <input type="text" class="form-control inputField" id="mobileQtyInput"/>
+                    <label for="mobileQtyOnHandInput" class="form-label name">QtyOnHand</label>
+                        <input type="text" class="form-control inputField" id="mobileQtyOnHandInput"/>
                     </div>
                     <div class="mb-3 ">
                     <label for="mobileUnitPriceInput" class="form-label name">Unit Price</label>
@@ -73,7 +73,7 @@ export const Item=()=>{
                         <th scope="col">Mobile ID</th>
                         <th scope="col">Brand</th>
                         <th scope="col">Color</th>
-                        <th scope="col">Qty</th>
+                        <th scope="col">QtyOnHand</th>
                         <th scope="col">Unit Price</th>
                         </tr>
                     </thead>

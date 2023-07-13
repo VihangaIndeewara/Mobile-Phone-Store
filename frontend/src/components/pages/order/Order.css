@@ -1,0 +1,65 @@
+.combo{
+    height: 30px;
+    font-size: 14px;
+}
+
+#customerInputForm{
+    width: 300px;
+    height: 240px;
+    position: absolute;
+    top: 150px;
+    left: 300px;
+    padding: 0px;
+    
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 0, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+    background: linear-gradient(135deg, rgba(223, 223, 220, 0.13), #c6cbce);
+
+}
+
+#itemSelectForm{
+    width: 700px;
+    height: 240px;
+    position: absolute;
+    top: 150px;
+    left: 680px;
+    padding: 0px;
+    
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 0, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+    background: linear-gradient(135deg, #c6cbce, rgba(223, 223, 220, 0.13));
+}
+
+.comboBrand{
+    width: 200px;
+    height: 30px;
+    font-size: 14px;
+}
+
+#btnAddToCart{
+    background-color: #5f5b51;
+    color: white;
+   border-radius: 20px;
+    width: 120px;
+    height: 30px;
+    margin-left: 10px;
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#btnAddToCart:hover{
+    background-color: #52565F;
+}
