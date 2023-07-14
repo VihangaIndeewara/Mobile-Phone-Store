@@ -9,7 +9,7 @@ import { Item } from './components/pages/item/Item';
 import { Order } from './components/pages/order/Order';
 import { OrderDetails } from './components/pages/orderDetails/OrderDetails';
 import { Customer } from './components/pages/customer/Customer';
-
+import {Home} from "./components/pages/home/Home"
 
 function App() {
   return (
@@ -20,7 +20,8 @@ function App() {
      {/* <Item/> */}
      {/* <Order/> */}
     {/* <OrderDetails/> */}
-    <Customer/>
+    {/* <Customer/> */}
+    <Home/>
     </div>
   );
 }
