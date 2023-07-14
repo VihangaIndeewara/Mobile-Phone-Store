@@ -62,7 +62,46 @@ export const Customer=()=>{
             </form>
             </div>
 
-            
+            <div id="tableDiv">
+                <table class="table table-striped" id="itemTable">
+                    <thead class="text-center">
+                        <tr class="table-dark">
+                        <th scope="col">Customer ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Contact No</th>
+                        <th scope="col">Address</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        <tr>
+                            <td scope="row">C001</td>
+                            <td>Kamal Perera</td>
+                            <td>+94714203555</td>
+                            <td>86, Galle Rd, Dehiwala</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">C001</td>
+                            <td>Kamal Perera</td>
+                            <td>+94714203555</td>
+                            <td>86, Galle Rd, Dehiwala</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">C001</td>
+                            <td>Kamal Perera</td>
+                            <td>+94714203555</td>
+                            <td>86, Galle Rd, Dehiwala</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">C001</td>
+                            <td>Kamal Perera</td>
+                            <td>+94714203555</td>
+                            <td>86, Galle Rd, Dehiwala</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
         </div>
         </div>
     )
