@@ -1,0 +1,21 @@
+#customerInputForm{
+    background-color: white;
+    width: 850px;
+    height: 210px;
+    position: absolute;
+    top: 150px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    
+    background: linear-gradient(135deg, #535151, #ECEDEE);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 0, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+    background: linear-gradient(135deg, rgba(240, 240, 234, 0.13), rgba(223, 223, 220, 0.13));
+
+}
+

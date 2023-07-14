@@ -28,7 +28,7 @@ export const OrderDetails=()=>{
 
             <div id="orderDetailsDiv">
                 <table class="table table-striped" id="orderDetailsTable">
-                    <thead >
+                    <thead class="text-center">
                         <tr class="table-dark">
                         <th scope="col">Order ID</th>
                         <th scope="col">Customer ID</th>
@@ -40,7 +40,7 @@ export const OrderDetails=()=>{
                         <th scope="col">Time</th>
                         </tr>
                     </thead>
-                    <tbody >
+                    <tbody class="text-center">
                         <tr>
                             <td scope="row">OR001</td>
                             <td>C001</td>

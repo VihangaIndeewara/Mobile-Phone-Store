@@ -68,7 +68,7 @@ export const Item=()=>{
 
             <div id="tableDiv">
                 <table class="table table-striped" id="itemTable">
-                    <thead >
+                    <thead class="text-center">
                         <tr class="table-dark">
                         <th scope="col">Mobile ID</th>
                         <th scope="col">Brand</th>
@@ -77,7 +77,7 @@ export const Item=()=>{
                         <th scope="col">Unit Price</th>
                         </tr>
                     </thead>
-                    <tbody >
+                    <tbody class="text-center">
                         <tr>
                             <td scope="row">M001</td>
                             <td>Samsung S5</td>
