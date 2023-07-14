@@ -23,6 +23,28 @@ export const Home=()=>{
             </Header>
 
             <h1 className="titleFirst">Home </h1>
+        
+            <div id="imageDiv">
+                <div >
+                    <img src="../assets/images/iphoneXS.jpeg" alt="xs"/>
+                </div>
+                <div >
+                    <img src="../assets/images/iphone14pro.jpeg" alt="14pro"/>
+                </div>    
+                <div >
+                    <img src="../assets/images/samsungNote20.jpeg" alt="Note20"/>
+                </div>
+                <div >
+                    <img src="../assets/images/iphoneSE.jpeg" alt="SE"/>
+                </div>
+                <div >
+                     <img src="../assets/images/redmi.jpeg" alt="redmi"/>
+                </div>
+                <div >
+                    <img src="../assets/images/samsungS23.jpeg" alt="S23"/>
+                </div>
+            </div>
+        
         </div>
     )
 }

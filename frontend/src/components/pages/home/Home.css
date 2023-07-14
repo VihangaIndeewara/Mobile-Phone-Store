@@ -1,0 +1,9 @@
+#imageDiv{
+    width: 700px;
+    height: 400px;
+    border: 2px solid black;
+    position: absolute;
+    left: 100px;
+    top: 250px;
+    border-radius: 20px;
+}
