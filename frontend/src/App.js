@@ -17,8 +17,8 @@ function App() {
      <Login/> 
      <Footer/>*/}
      {/* <Item/> */}
-     {/* <Order/> */}
-    <OrderDetails/>
+     <Order/>
+    {/* <OrderDetails/> */}
     </div>
   );
 }

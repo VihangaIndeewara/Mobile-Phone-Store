@@ -27,7 +27,10 @@ export const Order=()=>{
 
 
                 <form id="customerInputForm">
-                <br />
+              
+
+                <label className="lblOrderId" >Order ID : </label>
+                <label className="lblOrderId" >OR001</label>
          
                     <div class="mb-3">
                         <label for="customerIdCombo" class="form-label name">Customer ID</label>
