@@ -11,12 +11,14 @@ import './Login.css';
 import { Footer } from '../../footer/Footer';
 
 import { Home } from '../home/Home';
+import { Header } from '../../header/Header';
 
 
 
 export const Login=()=>{
     return(
         <div  >
+            <Header/>
                <div id='loginForm' >
                 
                 <CssVarsProvider >

@@ -1,4 +1,5 @@
 import { Header } from "../../header/Header"
+import { NavLink } from "react-router-dom"
 
 export const NavBar=()=>{
     return(
@@ -6,11 +7,12 @@ export const NavBar=()=>{
         <div id="navList">
             <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
                 <div class="navbar-nav ">
-                  <a class="nav-link active" aria-current="page" href="#" className="navItem">Home</a>
-                    <a class="nav-link" href="#" className="navItem">Customer</a>
-                    <a class="nav-link" href="#" className="navItem">Item</a>
-                    <a class="nav-link" href="#" className="navItem">Order</a>
-                    <a class="nav-link" href="#" className="navItem">Order Details</a>
+                    <NavLink to={"/home"} className="navItem">Home</NavLink>
+                    <NavLink to={"/customer"}  className="navItem">Customer</NavLink>
+                    <NavLink to={"/item"} className="navItem">Item</NavLink>
+                    <NavLink to={"/order"} className="navItem">Order</NavLink>
+                    <NavLink to={"/orderdetails"} className="navItem">Order Details</NavLink>
+                   
                 </div>
             </div>
         </div>
