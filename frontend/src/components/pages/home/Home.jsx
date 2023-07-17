@@ -3,7 +3,7 @@ import "../home/Home.css"
 
 export const Home=()=>{
     return(
-        <div>
+        <div id="mainDiv">
               <Header>
                 <div id="navList">
                     <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
@@ -22,8 +22,6 @@ export const Home=()=>{
                {/* </Link> */}
             </Header>
 
-            <h1 className="titleFirst">Home </h1>
-        
             <section id="imageSection">
             <div id="imageDiv">
                 
@@ -48,6 +46,42 @@ export const Home=()=>{
            
            
             </div>
+            </section>
+
+            <section id="aboutSection">
+                <h1>About</h1>
+                <br />
+                 <p>Moblie Phone Store is the prestigious dealer in smartphones to hold the category of 150 Million sales Club for Samsung smartphones and tablet sales in Sri Lanka! Your No.1 Retailer in Smartphones!
+                        We hold the major awards from all famous smartphone brands in Sri Lanka. The most awarded mobile partner in Sri Lanka. We specialize in major brands of mobiles and mobile accessories and bring you only the best in quality.
+                        We thank all our customers for the love and support which helped us to achieve our milestones.
+                        </p>
+                        <div class="container text-center">
+                <br />
+            <div class="row align-items-start">
+             
+                <div class="col">
+                
+                    <h5>Address</h5>
+                    <h6 >
+                            No:25,
+                            Main Road,
+                            Nugegoda.
+                    </h6>
+                </div>
+                <div class="col">
+                    <h5>Hotline</h5>
+                    <h6>  +94716669999</h6>
+                    <h6>  +94116669999</h6>
+                </div>
+                <div class="col">
+                    <h5>Email</h5>
+                    <h6>mobilephonestore@gmail.com</h6>
+                </div>
+                
+              
+            </div>
+            <br />
+          </div>
             </section>
         
         </div>
