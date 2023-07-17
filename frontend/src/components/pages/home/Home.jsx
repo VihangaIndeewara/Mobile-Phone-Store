@@ -24,26 +24,31 @@ export const Home=()=>{
 
             <h1 className="titleFirst">Home </h1>
         
+            <section id="imageSection">
             <div id="imageDiv">
+                
                 <div >
-                    <img src="../assets/images/iphoneXS.jpeg" alt="xs"/>
+                    <img className="imageShow" src="../assets/images/iphone14pro.jpg" alt="14pro"/>
+                </div>   
+                <div >
+                    <img className="imageShow" src="../assets/images/iphoneXS.jpg" alt="xs"/>
+                </div> 
+                <div >
+                    <img className="imageShow" src="../assets/images/samsungS23.jpg" alt="S23"/>
                 </div>
                 <div >
-                    <img src="../assets/images/iphone14pro.jpeg" alt="14pro"/>
-                </div>    
-                <div >
-                    <img src="../assets/images/samsungNote20.jpeg" alt="Note20"/>
+                     <img className="imageShow" src="../assets/images/redmi.jpg" alt="redmi"/>
                 </div>
                 <div >
-                    <img src="../assets/images/iphoneSE.jpeg" alt="SE"/>
+                    <img className="imageShow" src="../assets/images/samsungNote20.jpg" alt="Note20"/>
                 </div>
                 <div >
-                     <img src="../assets/images/redmi.jpeg" alt="redmi"/>
+                    <img className="imageShow" src="../assets/images/iphoneSE.jpg" alt="SE"/>
                 </div>
-                <div >
-                    <img src="../assets/images/samsungS23.jpeg" alt="S23"/>
-                </div>
+           
+           
             </div>
+            </section>
         
         </div>
     )
