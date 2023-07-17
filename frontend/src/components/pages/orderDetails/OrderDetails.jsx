@@ -8,11 +8,12 @@ export const OrderDetails=()=>{
                 <div id="navList">
                     <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
                         <div class="navbar-nav ">
-                            <a class="nav-link active" aria-current="page" href="#" className="navItem">Home</a>
-                            <a class="nav-link" href="#" className="navItem">Customer</a>
-                            <a class="nav-link" href="#" className="navItem">Item</a>
-                            <a class="nav-link" href="#" className="navItem">Order</a>
-                            <a class="nav-link disabled" className="navItem">Order Details</a>
+                            <Link to={Home} class="nav-link active" aria-current="page" href="#" className="navItem">Home </Link>
+                            <Link to={Customer} class="nav-link active" aria-current="page" href="#" className="navItem">Customer </Link>
+                            <Link to={Item} class="nav-link active" aria-current="page" href="#" className="navItem">Item </Link>
+                            <Link to={Order} class="nav-link active" aria-current="page" href="#" className="navItem">Order </Link>
+                            <Link to={OrderDetails} class="nav-link active" aria-current="page" href="#" className="navItem">Order Details </Link>
+
                         </div>
                     </div>
                 </div>

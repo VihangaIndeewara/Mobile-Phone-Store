@@ -10,6 +10,8 @@ import Link from '@mui/joy/Link';
 import './Login.css';
 import { Footer } from '../../footer/Footer';
 
+import { Home } from '../home/Home';
+
 
 
 export const Login=()=>{
@@ -49,8 +51,9 @@ export const Login=()=>{
                         <br />
                         <br />
 
-                        <Button id='btnLogin'>Log in</Button>
-                    
+                          <Button id='btnLogin'>Log in</Button>
+                  
+                        
 
                     </main>
                 </CssVarsProvider>
