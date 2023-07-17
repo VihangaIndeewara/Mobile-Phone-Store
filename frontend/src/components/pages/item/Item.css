@@ -119,7 +119,7 @@
     overflow-y: 'auto';
 }
 
-#mainDiv{
+.mainDiv{
     width: 100vw;
     height: 720px;
     background-color: #899d93;

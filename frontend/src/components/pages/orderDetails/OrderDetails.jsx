@@ -1,27 +1,11 @@
 import "../orderDetails/OrderDetails.css"
 import { Header } from "../../header/Header"
+import { NavBar } from "../navbar/NavBar"
 
 export const OrderDetails=()=>{
     return(
         <div className="OrderDetailsMainDiv">
-            <Header>
-                <div id="navList">
-                    <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
-                        <div class="navbar-nav ">
-                            <Link to={Home} class="nav-link active" aria-current="page" href="#" className="navItem">Home </Link>
-                            <Link to={Customer} class="nav-link active" aria-current="page" href="#" className="navItem">Customer </Link>
-                            <Link to={Item} class="nav-link active" aria-current="page" href="#" className="navItem">Item </Link>
-                            <Link to={Order} class="nav-link active" aria-current="page" href="#" className="navItem">Order </Link>
-                            <Link to={OrderDetails} class="nav-link active" aria-current="page" href="#" className="navItem">Order Details </Link>
-
-                        </div>
-                    </div>
-                </div>
-
-                {/* <Link to={'/login'}> */}
-                     <button className="btnLogout" type="button"  >Log Out</button>
-               {/* </Link> */}
-            </Header>
+            <NavBar/>
          
 
             <h1 className="titleFirst">Order </h1>
