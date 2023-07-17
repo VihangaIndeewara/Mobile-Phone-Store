@@ -21,7 +21,7 @@ export const OrderDetails=()=>{
                         <th scope="col">Mobile ID</th>
                         <th scope="col">Brand</th>
                         <th scope="col">Qty</th>
-                        <th scope="col">Unit Price</th>
+                        <th scope="col">Total Amount</th>
                         <th scope="col">Date</th>
                         <th scope="col">Time</th>
                         </tr>

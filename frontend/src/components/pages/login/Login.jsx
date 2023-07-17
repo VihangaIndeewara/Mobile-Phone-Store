@@ -6,12 +6,13 @@ import FormControl from '@mui/joy/FormControl';
 import FormLabel from '@mui/joy/FormLabel';
 import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
-import Link from '@mui/joy/Link';
+
 import './Login.css';
 import { Footer } from '../../footer/Footer';
 
 import { Home } from '../home/Home';
 import { Header } from '../../header/Header';
+import { Link } from 'react-router-dom';
 
 
 
@@ -53,11 +54,13 @@ export const Login=()=>{
                         <br />
                         <br />
 
+                       
+                        <Link to={"/home"}>
                           <Button id='btnLogin'>Log in</Button>
-                  
-                        
+                        </Link>
 
                     </main>
+                  
                 </CssVarsProvider>
                 </div>
                 <img id='backgroundImage' src="../assets/images/loginBackground.jpg" alt="backgroundImage" />

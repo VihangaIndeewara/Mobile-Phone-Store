@@ -4,7 +4,7 @@ import "../order/Order.css"
 
 export const Order=()=>{
     return(
-        <div id="mainDiv">
+        <div className="mainDiv">
            <NavBar/>
 
             <div>
@@ -12,13 +12,13 @@ export const Order=()=>{
                 <h1 className="titleSecond">Form</h1>
 
 
-                <form id="customerInputForm">
+                <form className="customerInputForm">
               
 
                 <label className="lblOrderId" >Order ID : </label>
                 <label className="lblOrderId" >OR001</label>
          
-                    <div class="mb-3">
+                    <div class="mb-3 ">
                         <label for="customerIdCombo" class="form-label name">Customer ID</label>
                         <select id="customerIdCombo" class="form-select combo">
                             <option></option>

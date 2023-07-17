@@ -19,25 +19,25 @@ export const Item=()=>{
                 <div className="divFirst">
                     <div class="mb-3">
                         <label for="mobileIdInput" class="form-label name">Mobile ID</label>
-                        <input type="text" class="form-control inputField" id="mobileIdInput"/>
+                        <input type="text" class="form-control inputField" id="mobileIdInput" placeholder="M001"/>
                     </div>
                     <div class="mb-3">
                         <label for="brandInput" class="form-label name">Brand</label>
-                        <input type="text" class="form-control inputField" id="brandInput"/>
+                        <input type="text" class="form-control inputField" id="brandInput" placeholder="Samsung S5"/>
                     </div>
                     <div class="mb-3 ">
                     <label for="mobileColorInput" class="form-label name">Mobile Color</label>
-                        <input type="text" class="form-control inputField" id="mobileColorInput"/>
+                        <input type="text" class="form-control inputField" id="mobileColorInput" placeholder="Black"/>
                     </div>
                 </div>
                 <div className="divFirst">
                     <div class="mb-3 ">
                     <label for="mobileQtyOnHandInput" class="form-label name">QtyOnHand</label>
-                        <input type="text" class="form-control inputField" id="mobileQtyOnHandInput"/>
+                        <input type="number" class="form-control inputField" id="mobileQtyOnHandInput" placeholder="5"/>
                     </div>
                     <div class="mb-3 ">
                     <label for="mobileUnitPriceInput" class="form-label name">Unit Price</label>
-                        <input type="text" class="form-control inputField" id="mobileUnitPriceInput"/>
+                        <input type="text" class="form-control inputField" id="mobileUnitPriceInput" placeholder="35000.00"/>
                     </div>
                 </div>  
          
