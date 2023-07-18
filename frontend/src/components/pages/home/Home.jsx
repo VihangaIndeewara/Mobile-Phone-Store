@@ -1,6 +1,6 @@
 import { Header } from "../../header/Header"
 import "../home/Home.css"
-import { NavBar } from "../navbar/NavBar"
+import { NavBar } from "../../navbar/NavBar"
 
 
 export const Home=()=>{

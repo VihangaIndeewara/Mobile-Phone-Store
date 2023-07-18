@@ -1,7 +1,7 @@
 import { Header } from "../../header/Header";
 import {Footer} from "../../footer/Footer"
 import "../item/Item.css"
-import { NavBar } from "../navbar/NavBar";
+import { NavBar } from "../../navbar/NavBar";
 
 export const Item=()=>{
     return(

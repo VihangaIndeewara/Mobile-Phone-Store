@@ -1,5 +1,5 @@
 import { Header } from "../../header/Header"
-import { NavBar } from "../navbar/NavBar"
+import { NavBar } from "../../navbar/NavBar"
 import "../order/Order.css"
 
 export const Order=()=>{

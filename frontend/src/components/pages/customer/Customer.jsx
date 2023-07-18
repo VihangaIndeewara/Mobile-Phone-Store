@@ -1,5 +1,5 @@
 import "../customer/Customer.css"
-import { NavBar } from "../navbar/NavBar"
+import { NavBar } from "../../navbar/NavBar"
 
 export const Customer=()=>{
     return (

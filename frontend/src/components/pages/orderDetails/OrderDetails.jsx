@@ -1,6 +1,6 @@
 import "../orderDetails/OrderDetails.css"
 import { Header } from "../../header/Header"
-import { NavBar } from "../navbar/NavBar"
+import { NavBar } from "../../navbar/NavBar"
 
 export const OrderDetails=()=>{
     return(
