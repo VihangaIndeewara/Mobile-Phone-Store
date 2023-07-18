@@ -1,7 +1,21 @@
 import "../customer/Customer.css"
 import { NavBar } from "../../navbar/NavBar"
+import { useState } from "react"
+import axios from "axios";
 
 export const Customer=()=>{
+    const [id,setId]=useState();
+    const [name, setName]=useState();
+    const [conatct, setConatct]=useState();
+    const [address,setAddress]=useState();
+
+    const saveCustomer=()=>{
+        axios.post('http://localhost:5000/api/customer',
+        {cusId:id,cusName:name,cusContactNo:conatct,cusAddress:address})
+        .then((res)=>alert(res.data.message))
+        .catch((err)=>alert(err))
+    }
+
     return (
         <div>
             <div className="mainDiv">
@@ -18,27 +32,27 @@ export const Customer=()=>{
                 <div className="divFirst">
                     <div class="mb-3">
                         <label for="customerIdInput" class="form-label name">Customer ID</label>
-                        <input type="text" class="form-control inputField" id="customerIdInput" placeholder="C001"/>
+                        <input type="text" class="form-control inputField" id="customerIdInput" placeholder="C001" name="cusId" value={id} onChange={(e)=>{setId(e.target.value)}}/>
                     </div>
                     <div class="mb-3">
                         <label for="nameInput" class="form-label name">Name</label>
-                        <input type="text" class="form-control inputField" id="nameInput" placeholder="Kamal Perera"/>
+                        <input type="text" class="form-control inputField" id="nameInput" placeholder="Kamal Perera" name="cusName" value={name} onChange={(e)=>{setName(e.target.value)}}/>
                     </div>
                     <div class="mb-3 ">
                     <label for="conatctNoInput" class="form-label name">Conatct No</label>
-                        <input type="text" class="form-control inputField" id="conatctNoInput" placeholder="+94714203555"/>
+                        <input type="text" class="form-control inputField" id="conatctNoInput" placeholder="+94714203555" name="cusContactNo" value={conatct} onChange={(e)=>{setConatct(e.target.value)}}/>
                     </div>
                 </div>
                 <div className="divFirst">
                     <div class="mb-3 col-8">
                     <label for="addressInput" class="form-label name">Address</label>
-                        <input type="text" class="form-control inputField " id="addressInput" placeholder="86, Galle Rd, Dehiwala" />
+                        <input type="text" class="form-control inputField " id="addressInput" placeholder="86, Galle Rd, Dehiwala" name="cusAddress" value={address} onChange={(e)=>{setAddress(e.target.value)}}/>
                     </div>
             
                 </div>  
          
                 <div id="btnGroup">
-                    <button id="btnSave" type="button">Save</button>
+                    <button id="btnSave" type="button" onClick={saveCustomer}>Save</button>
             
                     <button id="btnUpdate" type="button" >Update</button>
                 

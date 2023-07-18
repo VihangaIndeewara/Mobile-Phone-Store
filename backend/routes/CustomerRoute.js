@@ -1,10 +1,10 @@
 const express=require('express')
 const router=express.Router();
-const CustomerController=require('../controllers/CustomerController')
+const {saveCustomer,getCustomer}=require('../controllers/CustomerController')
 
-router.route('/customer')
-.post(CustomerController.saveCustomer)
-.get(CustomerController.getCustomer)
+
+router.post('/',saveCustomer);
+router.get('/',getCustomer)
 
 module.exports=router;
 

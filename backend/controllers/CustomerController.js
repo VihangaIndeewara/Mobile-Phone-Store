@@ -15,7 +15,7 @@ const saveCustomer=(req,res)=>{
     Customer.findOne({cusId:req.body.cusId}).then((response)=>{
         if(response==null){
             tempCustomer.save().then(()=>{
-                res.status(200).json({message:"Saved Customer"})
+               return res.status(200).json({message:"Saved Customer!!!"})
             })
         }else{
             res.status(400).json({message:"Customer Id Already Exists..."})
