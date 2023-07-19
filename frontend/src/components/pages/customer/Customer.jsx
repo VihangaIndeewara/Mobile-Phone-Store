@@ -12,7 +12,7 @@ export const Customer=()=>{
     const saveCustomer=()=>{
         axios.post('http://localhost:5000/api/customer',
         {cusId:id,cusName:name,cusContactNo:conatct,cusAddress:address})
-        .then((res)=>alert(res.data.message), loadData())
+        .then((res)=>alert(res.data.message), loadData(),clearInputFiels())
         .catch((err)=>alert(err))
        
     }
@@ -20,14 +20,19 @@ export const Customer=()=>{
     const updateCustomer=()=>{
         axios.put('http://localhost:5000/api/customer',
         {cusId:id,cusName:name,cusContactNo:conatct,cusAddress:address})
-        .then((res)=>alert(res.data.message))
+        .then((res)=>alert(res.data.message),loadData(),clearInputFiels())
         .catch((err)=>alert(err))
     }
 
+    const clearInputFiels=()=>{
+        setId("");
+        setName("");
+        setAddress("");
+        setConatct("");
+    }
 
     //load table data
-
-    
+   
 
     const [data,setData]=useState([]);
 
@@ -41,6 +46,14 @@ export const Customer=()=>{
     useEffect(()=>{
         loadData();
     },[])
+
+
+    const handleRowClick=(row)=>{
+        setId(row.cusId);
+        setName(row.cusName);
+        setAddress(row.cusAddress);
+        setConatct(row.cusContactNo);
+    }
 
     return (
         <div>
@@ -99,7 +112,7 @@ export const Customer=()=>{
                     </thead>
                     <tbody class="text-center">
                         {data.map((item,i)=>(
-                         <tr key={i}>
+                         <tr key={i} onClick={()=>{handleRowClick(item)}}>
                             <td scope="row">{item.cusId}</td>
                             <td>{item.cusName}</td>
                             <td>{item.cusContactNo}</td>
