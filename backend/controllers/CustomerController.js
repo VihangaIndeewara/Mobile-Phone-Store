@@ -12,10 +12,12 @@ const saveCustomer=(req,res)=>{
         cusAddress:req.body.cusAddress
     });
 
-    Customer.findOne({cusId:req.body.cusId}).then((response)=>{
+    Customer.save({cusId:req.body.cusId}).then((response)=>{
         if(response==null){
             tempCustomer.save().then(()=>{
                return res.status(200).json({message:"Saved Customer!!!"})
+            }).catch((err) => {
+                res.status(500).json({message: err})
             })
         }else{
             res.status(400).json({message:"Customer Id Already Exists..."})
@@ -30,35 +32,43 @@ const updateCustomer= (req,res)=>{
     const cusContactNo=req.body.cusContactNo;
     const cusAddress=req.body.cusAddress;
 
-    Customer.findOne({cusId:cusId}).then((response)=>{
-        if(response==null){
-            res.status(400).json({message:"Wrond Customer Id..."})
-        
-     
-        }else{
-            Customer.updateOne({cusId:cusId},{
-                $set: {
-                    cusName:cusName,
-                    cusContactNo:cusContactNo,
-                    cusAddress:cusAddress
-                }
+   
+        Customer.findOneAndUpdate({cusId:cusId},{
+            $set: {
+                cusName:cusName,
+                cusContactNo:cusContactNo,
+                cusAddress:cusAddress
+            }
 
-            }).then(()=>{
-                return res.status(200).json({message:"Updated Customer!!!"})
-            })
-        }
-    })
+        }).then(()=>{
+            return res.status(200).json({message:"Updated Customer!!!"})
+        }).catch((err) => {
+            res.status(500).json({message: err})
+        })
+}
 
   
 
-}
+
 
 const getAllCustomers=(req,res)=>{
     Customer.find().then((results)=>{
         return res.status(200).json(results)
+    }).catch((err) => {
+        res.status(500).json({message: err})
+    })
+}
+
+const deleteCustomer=(req,res)=>{
+    console.log(req.params.cusId)
+    Customer.findOneAndDelete({cusId:req.params.cusId}).then(()=>{
+       
+        res.status(200).json({message:"Deleted Customer!!!"})
+    }).catch((err)=>{
+        res.status(500).json({message:err})
     })
 }
 
 
 
-module.exports={saveCustomer,getAllCustomers,updateCustomer}
+module.exports={saveCustomer,getAllCustomers,updateCustomer,deleteCustomer}

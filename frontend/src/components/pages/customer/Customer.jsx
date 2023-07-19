@@ -24,6 +24,13 @@ export const Customer=()=>{
         .catch((err)=>alert(err))
     }
 
+    const deleteCustomer=()=>{
+        axios.delete(`http://localhost:5000/api/customer/${id}`)
+
+        .then((res)=>alert(res.data.message),loadData(),clearInputFiels)
+        .catch((err)=>alert(err))
+    }
+
     const clearInputFiels=()=>{
         setId("");
         setName("");
@@ -95,7 +102,7 @@ export const Customer=()=>{
             
                     <button id="btnUpdate" type="button" onClick={updateCustomer}>Update</button>
                 
-                    <button id="btnDelete" type="button" >Delete</button>
+                    <button id="btnDelete" type="button" onClick={deleteCustomer}>Delete</button>
                  </div>
             </form>
             </div>
