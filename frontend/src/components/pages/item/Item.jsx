@@ -2,8 +2,37 @@ import { Header } from "../../header/Header";
 import {Footer} from "../../footer/Footer"
 import "../item/Item.css"
 import { NavBar } from "../../navbar/NavBar";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export const Item=()=>{
+
+    const[id,setId]=useState();
+    const[brand,setBrand]=useState();
+    const[color,setColor]=useState();
+    const[qtyOnHand,setQtyOnHand]=useState();
+    const[unitPrice,setUnitPrice]=useState();
+
+    const handleSaveItem=()=>{
+        axios.post('http://localhost:5000/api/item',
+        {itemId:id,itemBrand:brand,itemColor:color,itemQtyOnHand:qtyOnHand,itemUnitPrice:unitPrice})
+        .then((res)=>alert(res.data.message))
+        .catch((err)=>alert(err))
+    }
+
+    const [tableData,setTableData]=useState([]);
+
+    const loadTableData=()=>{
+        fetch('http://localhost:5000/api/item')
+        .then(res=>res.json())
+        .then(tableData=>setTableData(tableData))
+        .catch(err=>console.log(err))
+    }
+
+    useEffect(()=>{
+        loadTableData();
+    },[])
+
     return(
         <div>
             <div className="mainDiv">
@@ -19,30 +48,30 @@ export const Item=()=>{
                 <div className="divFirst">
                     <div class="mb-3">
                         <label for="mobileIdInput" class="form-label name">Mobile ID</label>
-                        <input type="text" class="form-control inputField" id="mobileIdInput" placeholder="M001"/>
+                        <input type="text" class="form-control inputField" id="mobileIdInput" placeholder="M001" name="itemId" value={id} onChange={(e)=>{setId(e.target.value)}}/>
                     </div>
                     <div class="mb-3">
                         <label for="brandInput" class="form-label name">Brand</label>
-                        <input type="text" class="form-control inputField" id="brandInput" placeholder="Samsung S5"/>
+                        <input type="text" class="form-control inputField" id="brandInput" placeholder="Samsung S5" name="itemBrand" value={brand} onChange={(e)=>{setBrand(e.target.value)}}/>
                     </div>
                     <div class="mb-3 ">
                     <label for="mobileColorInput" class="form-label name">Mobile Color</label>
-                        <input type="text" class="form-control inputField" id="mobileColorInput" placeholder="Black"/>
+                        <input type="text" class="form-control inputField" id="mobileColorInput" placeholder="Black" name="itemColor" value={color} onChange={(e)=>{setColor(e.target.value)}}/>
                     </div>
                 </div>
                 <div className="divFirst">
                     <div class="mb-3 ">
                     <label for="mobileQtyOnHandInput" class="form-label name">QtyOnHand</label>
-                        <input type="number" class="form-control inputField" id="mobileQtyOnHandInput" placeholder="5"/>
+                        <input type="number" class="form-control inputField" id="mobileQtyOnHandInput" placeholder="5" name="itemQtyOnHand" value={qtyOnHand} onChange={(e)=>{setQtyOnHand(e.target.value)}}/>
                     </div>
                     <div class="mb-3 ">
                     <label for="mobileUnitPriceInput" class="form-label name">Unit Price</label>
-                        <input type="text" class="form-control inputField" id="mobileUnitPriceInput" placeholder="35000.00"/>
+                        <input type="text" class="form-control inputField" id="mobileUnitPriceInput" placeholder="35000.00" name="itemUnitPrice"value={unitPrice} onChange={(e)=>{setUnitPrice(e.target.value)}}/>
                     </div>
                 </div>  
          
                 <div id="btnGroup">
-                    <button id="btnSave" type="button">Save</button>
+                    <button id="btnSave" type="button" onClick={handleSaveItem}>Save</button>
             
                     <button id="btnUpdate" type="button" >Update</button>
                 
@@ -64,44 +93,17 @@ export const Item=()=>{
                         </tr>
                     </thead>
                     <tbody class="text-center">
-                        <tr>
-                            <td scope="row">M001</td>
-                            <td>Samsung S5</td>
-                            <td>Black</td>
-                            <td>12</td>
-                            <td>36000</td>
-                        </tr>
-                        <tr>
-                            <td>M001</td>
-                            <td>Samsung S5</td>
-                            <td>Black</td>
-                            <td>12</td>
-                            <td>36000</td>
-                        </tr>
-                        <tr>
-                            <td>M001</td>
-                            <td>Samsung S5</td>
-                            <td>Black</td>
-                            <td>12</td>
-                            <td>36000</td>
-                        </tr>
-                        <tr>
-                            <td>M001</td>
-                            <td>Samsung S5</td>
-                            <td>Black</td>
-                            <td>12</td>
-                            <td>36000</td>
-                        </tr>
-                        <tr>
-                            <td>M001</td>
-                            <td>Samsung S5</td>
-                            <td>Black</td>
-                            <td>12</td>
-                            <td>36000</td>
-                        </tr>
-          
-                
-
+                        {tableData.map((item,i)=>(
+                            <tr key={i}>
+                                <td scope="row">{item.itemId}</td>
+                                <td>{item.itemBrand}</td>
+                                <td>{item.itemColor}</td>
+                                <td>{item.itemQtyOnHand}</td>
+                                <td>{item.itemUnitPrice}</td>
+                            </tr>
+                        ))}
+                        
+                     
                     </tbody>
                 </table>
             </div>

@@ -12,7 +12,7 @@ const saveCustomer=(req,res)=>{
         cusAddress:req.body.cusAddress
     });
 
-    Customer.save({cusId:req.body.cusId}).then((response)=>{
+    Customer.findOne({cusId:req.body.cusId}).then((response)=>{
         if(response==null){
             tempCustomer.save().then(()=>{
                return res.status(200).json({message:"Saved Customer!!!"})
