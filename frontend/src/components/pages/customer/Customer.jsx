@@ -1,6 +1,6 @@
 import "../customer/Customer.css"
 import { NavBar } from "../../navbar/NavBar"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios";
 
 export const Customer=()=>{
@@ -12,8 +12,9 @@ export const Customer=()=>{
     const saveCustomer=()=>{
         axios.post('http://localhost:5000/api/customer',
         {cusId:id,cusName:name,cusContactNo:conatct,cusAddress:address})
-        .then((res)=>alert(res.data.message))
+        .then((res)=>alert(res.data.message), loadData())
         .catch((err)=>alert(err))
+       
     }
 
     const updateCustomer=()=>{
@@ -21,8 +22,25 @@ export const Customer=()=>{
         {cusId:id,cusName:name,cusContactNo:conatct,cusAddress:address})
         .then((res)=>alert(res.data.message))
         .catch((err)=>alert(err))
-        
     }
+
+
+    //load table data
+
+    
+
+    const [data,setData]=useState([]);
+
+    const loadData=()=>{
+        fetch('http://localhost:5000/api/customer')
+        .then(res=>res.json())
+        .then(data=>setData(data))
+        .catch(err=>console.log(err))
+     
+    }
+    useEffect(()=>{
+        loadData();
+    },[])
 
     return (
         <div>
@@ -80,30 +98,15 @@ export const Customer=()=>{
                         </tr>
                     </thead>
                     <tbody class="text-center">
-                        <tr>
-                            <td scope="row">C001</td>
-                            <td>Kamal Perera</td>
-                            <td>+94714203555</td>
-                            <td>86, Galle Rd, Dehiwala</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">C001</td>
-                            <td>Kamal Perera</td>
-                            <td>+94714203555</td>
-                            <td>86, Galle Rd, Dehiwala</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">C001</td>
-                            <td>Kamal Perera</td>
-                            <td>+94714203555</td>
-                            <td>86, Galle Rd, Dehiwala</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">C001</td>
-                            <td>Kamal Perera</td>
-                            <td>+94714203555</td>
-                            <td>86, Galle Rd, Dehiwala</td>
-                        </tr>
+                        {data.map((item,i)=>(
+                         <tr key={i}>
+                            <td scope="row">{item.cusId}</td>
+                            <td>{item.cusName}</td>
+                            <td>{item.cusContactNo}</td>
+                            <td>{item.cusAddress}</td>
+                         </tr>
+
+                        ))}
 
                     </tbody>
                 </table>

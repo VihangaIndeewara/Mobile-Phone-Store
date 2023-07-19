@@ -1,10 +1,10 @@
 const express=require('express')
 const router=express.Router();
-const {saveCustomer,getCustomer, updateCustomer}=require('../controllers/CustomerController')
+const {saveCustomer,getAllCustomers, updateCustomer}=require('../controllers/CustomerController')
 
 
 router.post('/',saveCustomer);
-router.get('/',getCustomer);
+router.get('/',getAllCustomers);
 router.put('/',updateCustomer);
 
 module.exports=router;

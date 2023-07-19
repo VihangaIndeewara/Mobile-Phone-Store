@@ -53,10 +53,12 @@ const updateCustomer= (req,res)=>{
 
 }
 
-const getCustomer=(req,res)=>{
-    res.status(200).json({message:"Saved Customer"})
+const getAllCustomers=(req,res)=>{
+    Customer.find().then((results)=>{
+        return res.status(200).json(results)
+    })
 }
 
 
 
-module.exports={saveCustomer,getCustomer,updateCustomer}
+module.exports={saveCustomer,getAllCustomers,updateCustomer}
