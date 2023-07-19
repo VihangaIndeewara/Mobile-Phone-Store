@@ -16,6 +16,14 @@ export const Customer=()=>{
         .catch((err)=>alert(err))
     }
 
+    const updateCustomer=()=>{
+        axios.put('http://localhost:5000/api/customer',
+        {cusId:id,cusName:name,cusContactNo:conatct,cusAddress:address})
+        .then((res)=>alert(res.data.message))
+        .catch((err)=>alert(err))
+        
+    }
+
     return (
         <div>
             <div className="mainDiv">
@@ -54,7 +62,7 @@ export const Customer=()=>{
                 <div id="btnGroup">
                     <button id="btnSave" type="button" onClick={saveCustomer}>Save</button>
             
-                    <button id="btnUpdate" type="button" >Update</button>
+                    <button id="btnUpdate" type="button" onClick={updateCustomer}>Update</button>
                 
                     <button id="btnDelete" type="button" >Delete</button>
                  </div>

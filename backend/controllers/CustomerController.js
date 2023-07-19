@@ -24,10 +24,39 @@ const saveCustomer=(req,res)=>{
     })
 }
 
+const updateCustomer= (req,res)=>{
+    const cusId=req.body.cusId;
+    const cusName=req.body.cusName;
+    const cusContactNo=req.body.cusContactNo;
+    const cusAddress=req.body.cusAddress;
+
+    Customer.findOne({cusId:cusId}).then((response)=>{
+        if(response==null){
+            res.status(400).json({message:"Wrond Customer Id..."})
+        
+     
+        }else{
+            Customer.updateOne({cusId:cusId},{
+                $set: {
+                    cusName:cusName,
+                    cusContactNo:cusContactNo,
+                    cusAddress:cusAddress
+                }
+
+            }).then(()=>{
+                return res.status(200).json({message:"Updated Customer!!!"})
+            })
+        }
+    })
+
+  
+
+}
+
 const getCustomer=(req,res)=>{
     res.status(200).json({message:"Saved Customer"})
 }
 
 
 
-module.exports={saveCustomer,getCustomer}
+module.exports={saveCustomer,getCustomer,updateCustomer}
