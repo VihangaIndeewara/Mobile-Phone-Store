@@ -1,8 +1,32 @@
+import { useState } from "react"
 import { Header } from "../../header/Header"
 import { NavBar } from "../../navbar/NavBar"
 import "../order/Order.css"
+import axios from "axios"
 
 export const Order=()=>{
+
+    const [cusId,setCusId]=useState();
+    const [cusName,setCusName]=useState();
+    const [cusContactNo,setCusContactNo]=useState();
+    const [cusAddress,setCusAddress]=useState();
+
+
+    const handleCustomerSave=()=>{
+        axios.post('http://localhost:5000/api/customer',
+        {cusId:cusId,cusName:cusName,cusContactNo:cusContactNo,cusAddress:cusAddress})
+        .then((res)=>{alert(res.data.message),clearCusInputFiels()})
+        .catch((err)=>{alert(err)})
+    }
+
+    const clearCusInputFiels=()=>{
+        setCusId("");
+        setCusName("");
+        setCusContactNo("");
+        setCusAddress("");
+    }
+
+
     return(
         <div className="mainDiv">
            <NavBar/>
@@ -10,6 +34,7 @@ export const Order=()=>{
             <div>
                 <h1 className="titleFirst">Order</h1>
                 <h1 className="titleSecond">Form</h1>
+
 
 
                 <form className="customerInputForm">
@@ -36,8 +61,6 @@ export const Order=()=>{
                     </div>          
             </form>
 
-            <button id="btnNewCustomer" type="button" class="btn btn-success"> + New Customer</button>
-                
 
             <form id="itemSelectForm">
                 <br />
@@ -151,6 +174,8 @@ export const Order=()=>{
             <button id="btnPlaceOrder" type="button" class="btn btn-success">Place Order</button>
                 
 
+            <button id="btnNewCustomer" type="button" class="btn btn-success"> + New Customer</button>
+                
 
 
         <div>
@@ -169,17 +194,17 @@ export const Order=()=>{
 
                                     <div class="mb-3 col">
                                         <label for="customerIDInput" class="form-label name">Customer Id</label>
-                                        <input type="text" class="form-control inputField" id="customerIDInput" placeholder="Ex:- C001" name="customerID" />
+                                        <input type="text" class="form-control inputField" id="customerIDInput" placeholder="Ex:- C001" name="cusID" value={cusId} onChange={(e)=>{setCusId(e.target.value)}}  />
                                         <span class="control-error"></span>
                                     </div>
                                     <div class="mb-3 col">
                                         <label for="nameInput" class="form-label name">Name</label>
-                                        <input type="text" class="form-control inputField" id="nameInput" placeholder="Ex:- Kamal Perera" name="customerName"/>
+                                        <input type="text" class="form-control inputField" id="nameInput" placeholder="Ex:- Kamal Perera" name="cusName" value={cusName} onChange={(e)=>{setCusName(e.target.value)}}/>
                                         <span class="control-error"></span>
                                     </div>
                                     <div class="mb-3 col">
                                         <label for="contactNoInput" class="form-label name">Contact No</label>
-                                        <input type="text" class="form-control inputField" id="contactNoInput" placeholder="Ex:- +94714202287" name="customerContactNo"/>
+                                        <input type="text" class="form-control inputField" id="contactNoInput" placeholder="Ex:- +94714202287" name="cusContactNo" value={cusContactNo} onChange={(e)=>{setCusContactNo(e.target.value)}}/>
                                         <span class="control-error"></span>
                                     </div>
                                 </div>
@@ -188,7 +213,7 @@ export const Order=()=>{
                                 <div class="modal-body  row" style={{paddingTop:0}}>
                                 <div class="mb-3 col">
                                         <label for="addressInput" class="form-label name">Address</label>
-                                        <input type="text" class="form-control inputField" id="addressInput" placeholder="Ex:-61/4A, Galle Rd, Panadura" name="customerAddress"/>
+                                        <input type="text" class="form-control inputField" id="addressInput" placeholder="Ex:-61/4A, Galle Rd, Panadura" name="cusAddress" value={cusAddress} onChange={(e)=>{setCusAddress(e.target.value)}}/>
                                         <span class="control-error"></span>
                                     </div>
 
@@ -196,7 +221,7 @@ export const Order=()=>{
                                 </div>
                             </form>
                             <div class="modal-footer">
-                                <button id="saveCusButton" type="button" class="btn btn-success btn-sm" style={{width: "150px"}}>Save</button>
+                                <button id="saveCusButton" type="button" class="btn btn-success btn-sm" style={{width: "150px"}} onClick={handleCustomerSave}>Save</button>
                                 <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>

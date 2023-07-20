@@ -16,7 +16,7 @@ export const Item=()=>{
     const handleSaveItem=()=>{
         axios.post('http://localhost:5000/api/item',
         {itemId:id,itemBrand:brand,itemColor:color,itemQtyOnHand:qtyOnHand,itemUnitPrice:unitPrice})
-        .then((res)=>alert(res.data.message))
+        .then((res)=>{alert(res.data.message),loadTableData(),clearInputFiels()})
         .catch((err)=>alert(err))
     }
 
@@ -45,16 +45,23 @@ export const Item=()=>{
     const handleUpdateItem=()=>{
         axios.put('http://localhost:5000/api/item',
         {itemId:id,itemBrand:brand,itemColor:color,itemQtyOnHand:qtyOnHand,itemUnitPrice:unitPrice})
-        .then((res)=>alert(res.data.message))
+        .then((res)=>{alert(res.data.message),loadTableData(),clearInputFiels()})
         .catch((err)=>alert(err))
     }
 
     const handleDeleteItem=()=>{
         axios.delete(`http://localhost:5000/api/item/${id}`)
-        .then((res)=>alert(res.data.message))
+        .then((res)=>{alert(res.data.message),loadTableData(),clearInputFiels()})
         .catch((err)=>alert(err))
     }
 
+    const clearInputFiels=()=>{
+        setId("");
+        setBrand("");
+        setColor("");
+        setQtyOnHand("");
+        setUnitPrice("");
+    }
 
     return(
         <div>

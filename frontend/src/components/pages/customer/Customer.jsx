@@ -12,7 +12,7 @@ export const Customer=()=>{
     const saveCustomer=()=>{
         axios.post('http://localhost:5000/api/customer',
         {cusId:id,cusName:name,cusContactNo:conatct,cusAddress:address})
-        .then((res)=>alert(res.data.message), loadData(),clearInputFiels())
+        .then((res)=>{alert(res.data.message), loadData(),clearInputFiels()})
         .catch((err)=>alert(err))
        
     }
@@ -20,14 +20,14 @@ export const Customer=()=>{
     const updateCustomer=()=>{
         axios.put('http://localhost:5000/api/customer',
         {cusId:id,cusName:name,cusContactNo:conatct,cusAddress:address})
-        .then((res)=>alert(res.data.message),loadData(),clearInputFiels())
+        .then((res)=>{alert(res.data.message),loadData(),clearInputFiels()})
         .catch((err)=>alert(err))
     }
 
     const deleteCustomer=()=>{
         axios.delete(`http://localhost:5000/api/customer/${id}`)
 
-        .then((res)=>alert(res.data.message),loadData(),clearInputFiels)
+        .then((res)=>{alert(res.data.message),loadData(),clearInputFiels()})
         .catch((err)=>alert(err))
     }
 

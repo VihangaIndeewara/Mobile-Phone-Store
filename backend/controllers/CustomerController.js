@@ -60,7 +60,7 @@ const getAllCustomers=(req,res)=>{
 }
 
 const deleteCustomer=(req,res)=>{
-    console.log(req.params.cusId)
+
     Customer.findOneAndDelete({cusId:req.params.cusId}).then(()=>{
        
         res.status(200).json({message:"Deleted Customer!!!"})
