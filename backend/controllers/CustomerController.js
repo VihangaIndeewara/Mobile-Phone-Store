@@ -73,7 +73,6 @@ const deleteCustomer=(req,res)=>{
 const getCustomerDetails=(req,res)=>{
   
     Customer.findOne({cusId:req.params.cusId}).then((result)=>{
-        console.log(result)
         return res.status(200).json(result)
        
     }).catch((err)=>{

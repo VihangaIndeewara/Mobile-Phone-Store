@@ -20,8 +20,9 @@ export const Order=()=>{
     const [customerDetails,setCustomerDetails]=useState({cusName:"",cusContact:""});
 
     //item
-    const [itemBrands,setItemBrands]=useState([]);
-
+    const [itemIds,setItemIds]=useState([]);
+    const [itemSelectedValue,setItemSelectedValue]=useState('');
+    const [itemDetails,setItemDetails]=useState({itemBrand:"",itemColor:"",itemQtyOnHand:"",itemUnitPrice:""})
 
     const handleCustomerSave=()=>{
         axios.post('http://localhost:5000/api/customer',
@@ -50,25 +51,21 @@ export const Order=()=>{
      
     }
 
-    //get item brands
+    //get item ids
 
-    const getItemBrands=()=>{
+    const getItemIds=()=>{
         fetch('http://localhost:5000/api/item')
         .then((res)=>res.json())
-        .then((data)=>setItemBrands(data))
+        .then((data)=>setItemIds(data))
         .catch((err)=>console.log(err))
     }
 
     useEffect(()=>{
         getCustomerIds();
-        getItemBrands();
+        getItemIds();
     },[])
 
     //get customer details
-
-
-;
-
 
     const getCustomerDetails=(cId)=>{
         setCusSelectedValue(cId)
@@ -79,6 +76,16 @@ export const Order=()=>{
         .catch((err)=>{console.log(err)})
     }
 
+    //get Item Details
+
+    const getItemDetails=(itemId)=>{
+        setItemSelectedValue(itemId)
+
+        fetch(`http://localhost:5000/api/item/${itemId}`)
+        .then((res)=>res.json())
+        .then((data)=>{setItemDetails({itemBrand:data.itemBrand,itemColor:data.itemColor,itemQtyOnHand:data.itemQtyOnHand,itemUnitPrice:data.itemUnitPrice})})
+        .catch((err)=>console.log(err))
+    }
 
     return(
         <div className="mainDiv">
@@ -123,11 +130,12 @@ export const Order=()=>{
                 <br />
                 <div className="divFirst">
                     <div class="mb-3">
-                         <label for="mobileBrandCombo" class="form-label name">Brand</label>
-                            <select id="mobileBrandCombo" class="form-select comboBrand">
-                               {itemBrands.map((item)=>(
-                                 <option key={item.itemBrand} value={item.itemBrand}>
-                                    {item.itemBrand}
+                            <label for="mobileIdCombo" class="form-label name">Mobile ID</label>
+                        
+                            <select id="mobileIdCombo" class="form-select comboBrand" value={itemSelectedValue} onChange={(e)=>{getItemDetails(e.target.value)}}>
+                               {itemIds.map((item)=>(
+                                 <option key={item.itemId} value={item.itemId}>
+                                    {item.itemId}
                                  </option>
                               ))}
                                 
@@ -137,22 +145,22 @@ export const Order=()=>{
 
                     </div>
                     <div class="mb-3">
-                        <label for="mobileIdInput" class="form-label name">Mobile ID</label>
-                        <input type="text" class="form-control inputField" id="mobileIdInput" disabled/>
+                        <label for="mobileBrandInput" class="form-label name">Brand</label>
+                        <input type="text" class="form-control inputField" id="mobileBrandInput" readOnly value={itemDetails.itemBrand}/>
                     </div>
                     <div class="mb-3 ">
                     <label for="mobileColorInput" class="form-label name">Mobile Color</label>
-                        <input type="text" class="form-control inputField" id="mobileColorInput" disabled/>
+                        <input type="text" class="form-control inputField" id="mobileColorInput" readOnly value={itemDetails.itemColor}/>
                     </div>
                 </div>
                 <div className="divFirst">
                     <div class="mb-3 ">
                     <label for="mobileQtyOnHandInput" class="form-label name">QtyOnHand</label>
-                        <input type="text" class="form-control inputField" id="mobileQtyOnHandInput" disabled/>
+                        <input type="text" class="form-control inputField" id="mobileQtyOnHandInput" readOnly value={itemDetails.itemQtyOnHand}/>
                     </div>
                     <div class="mb-3 ">
                     <label for="mobileUnitPriceInput" class="form-label name">Unit Price</label>
-                        <input type="text" class="form-control inputField" id="mobileUnitPriceInput" disabled/>
+                        <input type="text" class="form-control inputField" id="mobileUnitPriceInput" readOnly value={itemDetails.itemUnitPrice}/>
                     </div>
                     
                 </div>

@@ -64,7 +64,17 @@ const deleteItem=(req,res)=>{
     })
 }
 
+//get item details from given id
+
+const getItemDetails=(req,res)=>{
+    Item.findOne({itemId:req.params.itemId}).then((result)=>{
+        return res.status(200).json(result)
+    }).catch((err)=>{
+        return res.status(500).json(err)
+    })
+}
 
 
 
-module.exports={saveItem,getAllItems,updateItem,deleteItem}
+
+module.exports={saveItem,getAllItems,updateItem,deleteItem,getItemDetails}
