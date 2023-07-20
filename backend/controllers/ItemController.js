@@ -56,6 +56,14 @@ const updateItem=(req,res)=>{
     })
 }
 
+const deleteItem=(req,res)=>{
+    Item.findOneAndDelete({itemId:req.params.itemId}).then(()=>{
+        return res.status(200).json({message:"Deleted Item!!!"})
+    }).catch((err)=>{
+        return res.status(500).json({message:err})
+    })
+}
 
 
-module.exports={saveItem,getAllItems,updateItem}
+
+module.exports={saveItem,getAllItems,updateItem,deleteItem}

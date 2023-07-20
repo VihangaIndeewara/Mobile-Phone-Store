@@ -49,6 +49,12 @@ export const Item=()=>{
         .catch((err)=>alert(err))
     }
 
+    const handleDeleteItem=()=>{
+        axios.delete(`http://localhost:5000/api/item/${id}`)
+        .then((res)=>alert(res.data.message))
+        .catch((err)=>alert(err))
+    }
+
 
     return(
         <div>
@@ -92,7 +98,7 @@ export const Item=()=>{
             
                     <button id="btnUpdate" type="button" onClick={handleUpdateItem}>Update</button>
                 
-                    <button id="btnDelete" type="button" >Delete</button>
+                    <button id="btnDelete" type="button" onClick={handleDeleteItem}>Delete</button>
                  </div>
             </form>
             </div>
