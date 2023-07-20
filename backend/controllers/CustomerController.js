@@ -69,6 +69,18 @@ const deleteCustomer=(req,res)=>{
     })
 }
 
+//get customer details from given id
+const getCustomerDetails=(req,res)=>{
+  
+    Customer.findOne({cusId:req.params.cusId}).then((result)=>{
+        console.log(result)
+        return res.status(200).json(result)
+       
+    }).catch((err)=>{
+        return res.status(500).json({message:err})
+    })
+}
 
 
-module.exports={saveCustomer,getAllCustomers,updateCustomer,deleteCustomer}
+
+module.exports={saveCustomer,getAllCustomers,updateCustomer,deleteCustomer,getCustomerDetails}

@@ -6,11 +6,14 @@ import axios from "axios"
 
 export const Order=()=>{
 
+    //Customer Save Model
     const [cusId,setCusId]=useState();
     const [cusName,setCusName]=useState();
     const [cusContactNo,setCusContactNo]=useState();
     const [cusAddress,setCusAddress]=useState();
 
+    //Order interface customer fields
+    const [customerIds,setCustomerIds]=useState([])
 
     const handleCustomerSave=()=>{
         axios.post('http://localhost:5000/api/customer',
@@ -28,8 +31,8 @@ export const Order=()=>{
 
 
 
-    // get custoemr ids
-    const [customerIds,setCustomerIds]=useState([])
+    // get customer ids
+  
 
     const getCustomerIds=()=>{
         fetch('http://localhost:5000/api/customer')
@@ -40,10 +43,26 @@ export const Order=()=>{
     }
     useEffect(()=>{
         getCustomerIds();
+     
     },[])
 
+    //get customer details
+
+    const [selectedValue,setSelectedValue]=useState('');
+
+    const [customerDetails,setCustomerDetails]=useState({cusName:"",cusContact:""});
+
+;
 
 
+    const getCustomerDetails=(cId)=>{
+        setSelectedValue(cId)
+  
+        fetch(`http://localhost:5000/api/customer/${cId}`)
+        .then((res)=>res.json())
+        .then((data)=>{setCustomerDetails({cusName:data.cusName,cusContact:data.cusContactNo})})
+        .catch((err)=>{console.log(err)})
+    }
 
 
     return(
@@ -64,9 +83,9 @@ export const Order=()=>{
          
                     <div class="mb-3 ">
                         <label for="customerIdCombo" class="form-label name">Customer ID</label>
-                        <select id="customerIdCombo" class="form-select combo">
+                        <select id="customerIdCombo" class="form-select combo" value={selectedValue} onChange={(e)=>{getCustomerDetails(e.target.value)}}>
                             {customerIds.map((item)=>(
-                                 <option key={item.cusId} value={item.cusId}>
+                                 <option key={item.cusId} value={item.cusId} >
                                  {item.cusId}
                                </option>
                             ))}
@@ -74,11 +93,13 @@ export const Order=()=>{
                     </div>
                     <div class="mb-3">
                         <label for="nameInput" class="form-label name">Name</label>
-                        <input type="text" class="form-control inputField" id="nameInput" disabled/>
+                     
+                            <input type="text" class="form-control inputField" id="nameInput" readOnly value={customerDetails.cusName}/>
+                      
                     </div>
                     <div class="mb-3 ">
                     <label for="contactNoInput" class="form-label name">Contact No</label>
-                        <input type="text" class="form-control inputField" id="contactNoInput" disabled/>
+                        <input type="text" class="form-control inputField" id="contactNoInput" readOnly value={customerDetails.cusContact} />
                     </div>          
             </form>
 
