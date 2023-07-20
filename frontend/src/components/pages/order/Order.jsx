@@ -13,7 +13,15 @@ export const Order=()=>{
     const [cusAddress,setCusAddress]=useState();
 
     //Order interface customer fields
+
+    //customer
     const [customerIds,setCustomerIds]=useState([])
+    const [cusSelectedValue,setCusSelectedValue]=useState('');
+    const [customerDetails,setCustomerDetails]=useState({cusName:"",cusContact:""});
+
+    //item
+    const [itemBrands,setItemBrands]=useState([]);
+
 
     const handleCustomerSave=()=>{
         axios.post('http://localhost:5000/api/customer',
@@ -36,27 +44,34 @@ export const Order=()=>{
 
     const getCustomerIds=()=>{
         fetch('http://localhost:5000/api/customer')
-        .then(res=>res.json())
-        .then(customerIds=>setCustomerIds(customerIds))
-        .catch(err=>console.log(err))
+        .then((res)=>res.json())
+        .then((customerIds)=>setCustomerIds(customerIds))
+        .catch((err)=>console.log(err))
      
     }
+
+    //get item brands
+
+    const getItemBrands=()=>{
+        fetch('http://localhost:5000/api/item')
+        .then((res)=>res.json())
+        .then((data)=>setItemBrands(data))
+        .catch((err)=>console.log(err))
+    }
+
     useEffect(()=>{
         getCustomerIds();
-     
+        getItemBrands();
     },[])
 
     //get customer details
 
-    const [selectedValue,setSelectedValue]=useState('');
-
-    const [customerDetails,setCustomerDetails]=useState({cusName:"",cusContact:""});
 
 ;
 
 
     const getCustomerDetails=(cId)=>{
-        setSelectedValue(cId)
+        setCusSelectedValue(cId)
   
         fetch(`http://localhost:5000/api/customer/${cId}`)
         .then((res)=>res.json())
@@ -83,7 +98,7 @@ export const Order=()=>{
          
                     <div class="mb-3 ">
                         <label for="customerIdCombo" class="form-label name">Customer ID</label>
-                        <select id="customerIdCombo" class="form-select combo" value={selectedValue} onChange={(e)=>{getCustomerDetails(e.target.value)}}>
+                        <select id="customerIdCombo" class="form-select combo" value={cusSelectedValue} onChange={(e)=>{getCustomerDetails(e.target.value)}}>
                             {customerIds.map((item)=>(
                                  <option key={item.cusId} value={item.cusId} >
                                  {item.cusId}
@@ -110,9 +125,16 @@ export const Order=()=>{
                     <div class="mb-3">
                          <label for="mobileBrandCombo" class="form-label name">Brand</label>
                             <select id="mobileBrandCombo" class="form-select comboBrand">
-                                <option></option>
+                               {itemBrands.map((item)=>(
+                                 <option key={item.itemBrand} value={item.itemBrand}>
+                                    {item.itemBrand}
+                                 </option>
+                              ))}
+                                
                             </select>
                        
+        
+
                     </div>
                     <div class="mb-3">
                         <label for="mobileIdInput" class="form-label name">Mobile ID</label>
