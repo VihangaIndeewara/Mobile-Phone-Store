@@ -33,6 +33,23 @@ export const Item=()=>{
         loadTableData();
     },[])
 
+
+    const handleTableRowClick=(row)=>{
+        setId(row.itemId);
+        setBrand(row.itemBrand);
+        setColor(row.itemColor);
+        setQtyOnHand(row.itemQtyOnHand);
+        setUnitPrice(row.itemUnitPrice)
+    }
+
+    const handleUpdateItem=()=>{
+        axios.put('http://localhost:5000/api/item',
+        {itemId:id,itemBrand:brand,itemColor:color,itemQtyOnHand:qtyOnHand,itemUnitPrice:unitPrice})
+        .then((res)=>alert(res.data.message))
+        .catch((err)=>alert(err))
+    }
+
+
     return(
         <div>
             <div className="mainDiv">
@@ -73,7 +90,7 @@ export const Item=()=>{
                 <div id="btnGroup">
                     <button id="btnSave" type="button" onClick={handleSaveItem}>Save</button>
             
-                    <button id="btnUpdate" type="button" >Update</button>
+                    <button id="btnUpdate" type="button" onClick={handleUpdateItem}>Update</button>
                 
                     <button id="btnDelete" type="button" >Delete</button>
                  </div>
@@ -94,7 +111,7 @@ export const Item=()=>{
                     </thead>
                     <tbody class="text-center">
                         {tableData.map((item,i)=>(
-                            <tr key={i}>
+                            <tr key={i} onClick={()=>{handleTableRowClick(item)}}>
                                 <td scope="row">{item.itemId}</td>
                                 <td>{item.itemBrand}</td>
                                 <td>{item.itemColor}</td>

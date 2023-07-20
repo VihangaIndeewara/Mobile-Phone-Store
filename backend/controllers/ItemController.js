@@ -35,5 +35,27 @@ const getAllItems=(req,res)=>{
 }
 
 
+const updateItem=(req,res)=>{
+    const id=req.body.itemId;
+    const brand=req.body.itemBrand;
+    const color=req.body.itemColor;
+    const qtyOnHand=req.body.itemQtyOnHand;
+    const unitPrice=req.body.itemUnitPrice;
 
-module.exports={saveItem,getAllItems}
+    Item.findOneAndUpdate({itemId:id},{
+        $set:{
+            itemBrand:brand,
+            itemColor:color,
+            itemQtyOnHand:qtyOnHand,
+            itemUnitPrice:unitPrice
+        }
+    }).then(()=>{
+        return res.status(200).json({message:"Updated Item!!!"})
+    }).catch((err)=>{
+         res.status(500).json({message:err})
+    })
+}
+
+
+
+module.exports={saveItem,getAllItems,updateItem}

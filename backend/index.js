@@ -2,7 +2,7 @@ const express=require('express');
 const mongoose=require('mongoose')
 const cors=require('cors')
 const CustomerRoute=require('../backend/routes/CustomerRoute');
-const ItemRoute=require('../backend/routes/ItemRoute')
+const ItemRoute=require('../backend/routes/ItemRoute');
 
 const app=express();
 const PORT = 5000;

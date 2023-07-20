@@ -1,8 +1,10 @@
 const express=require('express')
-const { saveItem ,getAllItems} = require('../controllers/ItemController')
+
+const { saveItem ,getAllItems, updateItem } = require('../controllers/ItemController')
 const router=express.Router()
 
 router.post('/',saveItem)
 router.get('/',getAllItems)
+router.put('/',updateItem)
 
-module.exports=router
+module.exports=router;
