@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Header } from "../../header/Header"
 import { NavBar } from "../../navbar/NavBar"
 import "../order/Order.css"
@@ -27,6 +27,25 @@ export const Order=()=>{
     }
 
 
+
+    // get custoemr ids
+    const [customerIds,setCustomerIds]=useState([])
+
+    const getCustomerIds=()=>{
+        fetch('http://localhost:5000/api/customer')
+        .then(res=>res.json())
+        .then(customerIds=>setCustomerIds(customerIds))
+        .catch(err=>console.log(err))
+     
+    }
+    useEffect(()=>{
+        getCustomerIds();
+    },[])
+
+
+
+
+
     return(
         <div className="mainDiv">
            <NavBar/>
@@ -46,9 +65,11 @@ export const Order=()=>{
                     <div class="mb-3 ">
                         <label for="customerIdCombo" class="form-label name">Customer ID</label>
                         <select id="customerIdCombo" class="form-select combo">
-                            <option></option>
-                            <option>C001</option>
-                            <option>C002</option>
+                            {customerIds.map((item)=>(
+                                 <option key={item.cusId} value={item.cusId}>
+                                 {item.cusId}
+                               </option>
+                            ))}
                         </select>
                     </div>
                     <div class="mb-3">
