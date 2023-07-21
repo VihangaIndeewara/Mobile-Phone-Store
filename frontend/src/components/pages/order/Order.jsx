@@ -97,16 +97,11 @@ export const Order=()=>{
 
         const itemAmount=itemDetails.itemUnitPrice*itemQty;
 
-        const cartDetail=[{itemId:itemSelectedValue,itemBrand:itemDetails.itemBrand,itemColor:itemDetails.itemColor,itemQty:itemQty,itemUnitPrice:itemDetails.itemUnitPrice,itemAmount:itemAmount}];
+        const cartDetail={itemId:itemSelectedValue,itemBrand:itemDetails.itemBrand,itemColor:itemDetails.itemColor,itemQty:itemQty,itemUnitPrice:itemDetails.itemUnitPrice,itemAmount:itemAmount};
 
-        setItemCart(cartDetail)
-    
-       cart()
-
+        setItemCart(prevArray=>[...prevArray,cartDetail])
     }
-const cart=()=>{
-    console.log(itemCart)
-}
+
 
 
     return(
