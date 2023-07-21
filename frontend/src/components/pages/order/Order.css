@@ -95,8 +95,7 @@
 
     height: 100%;
     width: 100%;
-    
-    background-color: rgb(250, 144, 6);
+    background-color: #CECECE;
     overflow-y: 'auto';
 }
 

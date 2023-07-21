@@ -24,6 +24,10 @@ export const Order=()=>{
     const [itemSelectedValue,setItemSelectedValue]=useState('');
     const [itemDetails,setItemDetails]=useState({itemBrand:"",itemColor:"",itemQtyOnHand:"",itemUnitPrice:""})
 
+   const [itemQty,setItemQty]=useState();
+   const [itemCart,setItemCart]=useState([]);
+   
+   
     const handleCustomerSave=()=>{
         axios.post('http://localhost:5000/api/customer',
         {cusId:cusId,cusName:cusName,cusContactNo:cusContactNo,cusAddress:cusAddress})
@@ -86,6 +90,24 @@ export const Order=()=>{
         .then((data)=>{setItemDetails({itemBrand:data.itemBrand,itemColor:data.itemColor,itemQtyOnHand:data.itemQtyOnHand,itemUnitPrice:data.itemUnitPrice})})
         .catch((err)=>console.log(err))
     }
+
+    //Add to cart
+
+    const handleAddToCart=()=>{
+
+        const itemAmount=itemDetails.itemUnitPrice*itemQty;
+
+        const cartDetail=[{itemId:itemSelectedValue,itemBrand:itemDetails.itemBrand,itemColor:itemDetails.itemColor,itemQty:itemQty,itemUnitPrice:itemDetails.itemUnitPrice,itemAmount:itemAmount}];
+
+        setItemCart(cartDetail)
+    
+       cart()
+
+    }
+const cart=()=>{
+    console.log(itemCart)
+}
+
 
     return(
         <div className="mainDiv">
@@ -170,11 +192,11 @@ export const Order=()=>{
             <div className="divFirst">
                 <div class="mb-3 ">
                     <label for="mobileQtyInput" class="form-label name">Qty</label>
-                        <input type="number" class="form-control inputField" id="mobileQtyInput" />
+                        <input type="number" class="form-control inputField" id="mobileQtyInput" value={itemQty} onChange={(e)=>{setItemQty(e.target.value)}}/>
                     </div>
          
                 <div id="btnGroup">
-                    <button id="btnAddToCart" type="button">Add to Cart</button>
+                    <button id="btnAddToCart" type="button" onClick={handleAddToCart}>Add to Cart</button>
                  </div>
                  </div>
             </form>
@@ -190,47 +212,25 @@ export const Order=()=>{
                         <th scope="col">Color</th>
                         <th scope="col">Qty</th>
                         <th scope="col">Unit Price</th>
+                        <th scope="col">Amount</th>
                         </tr>
                     </thead>
                     <tbody class="text-center">
-                        <tr>
-                            <td scope="row">M001</td>
-                            <td>Samsung S5</td>
-                            <td>Black</td>
-                            <td>12</td>
-                            <td>36000</td>
-                        </tr>
-                        <tr>
-                            <td>M001</td>
-                            <td>Samsung S5</td>
-                            <td>Black</td>
-                            <td>12</td>
-                            <td>36000</td>
-                        </tr>
-                        <tr>
-                            <td>M001</td>
-                            <td>Samsung S5</td>
-                            <td>Black</td>
-                            <td>12</td>
-                            <td>36000</td>
-                        </tr>
-                        <tr>
-                            <td>M001</td>
-                            <td>Samsung S5</td>
-                            <td>Black</td>
-                            <td>12</td>
-                            <td>36000</td>
-                        </tr>
-                        <tr>
-                            <td>M001</td>
-                            <td>Samsung S5</td>
-                            <td>Black</td>
-                            <td>12</td>
-                            <td>36000</td>
-                        </tr>
-          
-                
 
+                        {itemCart.map((item,i)=>(
+                            <tr key={i}>
+                                <td scope="row">{item.itemId}</td>
+                                <td>{item.itemBrand}</td>
+                                <td>{item.itemColor}</td>
+                                <td>{item.itemQty}</td>
+                                <td>{item.itemUnitPrice}</td>
+                                <td>{item.itemAmount}</td>
+                            </tr>       
+                        ))}
+
+                       
+                        
+                    
                     </tbody>
                 </table>
                 </div>
