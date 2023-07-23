@@ -4,6 +4,7 @@ import { NavBar } from "../../navbar/NavBar"
 import "../order/Order.css"
 import axios from "axios"
 
+
 export const Order=()=>{
 
     //Customer Save Model
@@ -67,6 +68,7 @@ export const Order=()=>{
     useEffect(()=>{
         getCustomerIds();
         getItemIds();
+       
     },[])
 
     //get customer details
@@ -98,10 +100,37 @@ export const Order=()=>{
         const itemAmount=itemDetails.itemUnitPrice*itemQty;
 
         const cartDetail={itemId:itemSelectedValue,itemBrand:itemDetails.itemBrand,itemColor:itemDetails.itemColor,itemQty:itemQty,itemUnitPrice:itemDetails.itemUnitPrice,itemAmount:itemAmount};
-
         setItemCart(prevArray=>[...prevArray,cartDetail])
+        
+         clearItemInputFields()
+         findTotal(itemAmount)
+    }
+ 
+
+
+    const [total,setTotal]=useState("0");
+   
+    const findTotal=(am)=>{
+        let total=am;
+        
+        
+        itemCart.forEach((item)=>{
+            total+=item.itemAmount
+        })
+        setTotal(total)
     }
 
+    const removeItem=(index)=>{
+
+        let tempCart=[...itemCart]
+        tempCart.splice(index,1)
+        setItemCart(tempCart)     
+    }
+
+    const clearItemInputFields=()=>{
+        setItemDetails({itemBrand:"",itemColor:"",itemQtyOnHand:"",itemUnitPrice:""})
+        setItemQty("")
+    }
 
 
     return(
@@ -187,11 +216,11 @@ export const Order=()=>{
             <div className="divFirst">
                 <div class="mb-3 ">
                     <label for="mobileQtyInput" class="form-label name">Qty</label>
-                        <input type="number" class="form-control inputField" id="mobileQtyInput" value={itemQty} onChange={(e)=>{setItemQty(e.target.value)}}/>
+                        <input type="number" class="form-control inputField" id="mobileQtyInput" value={itemQty}  onChange={(e)=>{setItemQty(e.target.value)}}/>
                     </div>
          
                 <div id="btnGroup">
-                    <button id="btnAddToCart" type="button" onClick={handleAddToCart}>Add to Cart</button>
+                    <button id="btnAddToCart"  type="button" onClick={handleAddToCart}>Add to Cart</button>
                  </div>
                  </div>
             </form>
@@ -199,7 +228,7 @@ export const Order=()=>{
             <div id="cartTableDiv">
             <br />
 
-                <table class="table table-striped" id="cartItemTable">
+                <table class="table table-striped" id="cartItemTable" >
                     <thead class="text-center">
                         <tr class="table-dark">
                         <th scope="col">Mobile ID</th>
@@ -208,19 +237,22 @@ export const Order=()=>{
                         <th scope="col">Qty</th>
                         <th scope="col">Unit Price</th>
                         <th scope="col">Amount</th>
+                        <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody class="text-center">
 
-                        {itemCart.map((item,i)=>(
-                            <tr key={i}>
+                        {itemCart.map((item,index)=>(
+                            <tr key={index}>
                                 <td scope="row">{item.itemId}</td>
                                 <td>{item.itemBrand}</td>
                                 <td>{item.itemColor}</td>
                                 <td>{item.itemQty}</td>
                                 <td>{item.itemUnitPrice}</td>
                                 <td>{item.itemAmount}</td>
-                            </tr>       
+                                <td><img id="removeImg" src="../assets/images/remove.png" alt="removeimage"  onClick={()=>{removeItem(index)}}/></td>
+                            </tr>    
+                           
                         ))}
 
                        
@@ -234,7 +266,7 @@ export const Order=()=>{
 
             <div id="totDiv">
                 <label id="totLable">Total : </label>
-                <h1 id="totAmount">0.00</h1>
+                <h1 id="totAmount">{total}</h1>
             </div>
 
             

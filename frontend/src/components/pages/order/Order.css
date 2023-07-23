@@ -173,3 +173,15 @@
     left: 0; 
     bottom: 0;
 }
+
+#removeImg{
+    width: 2vw;
+    height: 4vh;
+   border-color: #EA2D40;
+}
+
+#removeImg:hover{
+    box-shadow: 0 0 0 4px #EA2D40;
+    border-radius: 100%;
+    cursor: pointer;
+}
