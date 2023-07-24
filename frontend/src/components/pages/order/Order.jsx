@@ -110,8 +110,8 @@ export const Order=()=>{
 
     const [total,setTotal]=useState("0");
    
-    const findTotal=(am)=>{
-        let total=am;
+    const findTotal=(amount)=>{
+        let total=amount;
         
         
         itemCart.forEach((item)=>{
@@ -125,11 +125,32 @@ export const Order=()=>{
         let tempCart=[...itemCart]
         tempCart.splice(index,1)
         setItemCart(tempCart)     
+        setTotal(total-itemCart[index].itemAmount)
+       
     }
 
     const clearItemInputFields=()=>{
         setItemDetails({itemBrand:"",itemColor:"",itemQtyOnHand:"",itemUnitPrice:""})
         setItemQty("")
+    }
+
+    //Place Order
+
+    const [date,setDate]=useState(null)
+    const [time,setTime]=useState(null)
+
+    const handlePlaceOrder=()=>{
+        console.log(cusSelectedValue)
+        
+        const d=new Date();
+        setDate(d.toLocaleDateString())
+
+        setTime(d.toLocaleTimeString())
+        
+
+        console.log(itemCart)
+        console.log(time)
+        console.log(date)
     }
 
 
@@ -270,7 +291,7 @@ export const Order=()=>{
             </div>
 
             
-            <button id="btnPlaceOrder" type="button" class="btn btn-success">Place Order</button>
+            <button id="btnPlaceOrder" type="button" class="btn btn-success" onClick={handlePlaceOrder}>Place Order</button>
                 
 
             <button id="btnNewCustomer" type="button" class="btn btn-success"> + New Customer</button>
