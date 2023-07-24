@@ -1,8 +1,26 @@
 import "../orderDetails/OrderDetails.css"
 import { Header } from "../../header/Header"
 import { NavBar } from "../../navbar/NavBar"
+import { useEffect, useState } from "react"
 
 export const OrderDetails=()=>{
+
+    const [tableData,setTableData]=useState([])
+
+    const getOrderDetails=()=>{
+        fetch('http://localhost:5000/api/order')
+        .then(res=>res.json())
+        .then((data)=>{setTableData(data)})
+        .catch(err=>console.log(err))
+    }
+
+
+    useEffect(()=>{
+        getOrderDetails();
+    },[])
+
+
+
     return(
         <div className="OrderDetailsMainDiv">
             <NavBar/>
@@ -18,77 +36,26 @@ export const OrderDetails=()=>{
                         <tr class="table-dark">
                         <th scope="col">Order ID</th>
                         <th scope="col">Customer ID</th>
-                        <th scope="col">Mobile ID</th>
-                        <th scope="col">Brand</th>
-                        <th scope="col">Qty</th>
                         <th scope="col">Total Amount</th>
                         <th scope="col">Date</th>
                         <th scope="col">Time</th>
                         </tr>
                     </thead>
                     <tbody class="text-center">
-                        <tr>
-                            <td scope="row">OR001</td>
-                            <td>C001</td>
-                            <td>M001</td>
-                            <td>Samsung S5</td>
-                            <td>1</td>
-                            <td>36000</td>
-                            <td>2023-07-13</td>
-                            <td>17.08</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">OR001</td>
-                            <td>C001</td>
-                            <td>M001</td>
-                            <td>Samsung S5</td>
-                            <td>1</td>
-                            <td>36000</td>
-                            <td>2023-07-13</td>
-                            <td>17.08</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">OR001</td>
-                            <td>C001</td>
-                            <td>M001</td>
-                            <td>Samsung S5</td>
-                            <td>1</td>
-                            <td>36000</td>
-                            <td>2023-07-13</td>
-                            <td>17.08</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">OR001</td>
-                            <td>C001</td>
-                            <td>M001</td>
-                            <td>Samsung S5</td>
-                            <td>1</td>
-                            <td>36000</td>
-                            <td>2023-07-13</td>
-                            <td>17.08</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">OR001</td>
-                            <td>C001</td>
-                            <td>M001</td>
-                            <td>Samsung S5</td>
-                            <td>1</td>
-                            <td>36000</td>
-                            <td>2023-07-13</td>
-                            <td>17.08</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">OR001</td>
-                            <td>C001</td>
-                            <td>M001</td>
-                            <td>Samsung S5</td>
-                            <td>1</td>
-                            <td>36000</td>
-                            <td>2023-07-13</td>
-                            <td>17.08</td>
-                        </tr>
-          
+                        {tableData.map((order,index)=>(
+                            <tr key={index}>
+                                <td scope="row">{order.orderId}</td>
+                                <td>{order.cusId}</td>
+                                <td>{order.totalAmount}</td>
+                                <td>{order.date}</td>
+                                <td>{order.time}</td>
+                                
+                            </tr>
+                        ))}
 
+
+                        
+                    
                     </tbody>
                 </table>
             </div>
