@@ -46,10 +46,35 @@ export const Customer=()=>{
     const loadData=()=>{
         fetch('http://localhost:5000/api/customer')
         .then(res=>res.json())
-        .then(data=>setData(data))
+        .then((data)=>{setData(data),setCusId(data)})
         .catch(err=>console.log(err))
      
     }
+
+    const setCusId=(customer)=>{
+        let newCusId;
+        if(customer.length==0){
+            newCusId="C001";
+        }else{
+
+            const lastIndex=customer.length-1;
+            const lastId=(customer[lastIndex].cusId);
+
+            let num=lastId.substring(1);
+            num++;
+           
+            if(num<=9){
+                newCusId="C00"+num;
+            }else if(num>9&&num<100){
+                newCusId="C0"+num;
+            }else if(num>=100){
+                newCusId="C"+num;
+            }
+        }
+
+        setId(newCusId);
+    }
+
     useEffect(()=>{
         loadData();
     },[])
@@ -76,9 +101,9 @@ export const Customer=()=>{
             <form id="customerInputForm">
                 <br />
                 <div className="divFirst">
-                    <div class="mb-3">
+                    <div class="mb-3  col-3">
                         <label for="customerIdInput" class="form-label name">Customer ID</label>
-                        <input type="text" class="form-control inputField" id="customerIdInput" placeholder="C001" name="cusId" value={id} onChange={(e)=>{setId(e.target.value)}}/>
+                        <input type="text" class="form-control inputField fw-bold" id="customerIdInput" placeholder="C001" name="cusId" readOnly value={id}/>
                     </div>
                     <div class="mb-3">
                         <label for="nameInput" class="form-label name">Name</label>

@@ -25,9 +25,36 @@ export const Item=()=>{
     const loadTableData=()=>{
         fetch('http://localhost:5000/api/item')
         .then(res=>res.json())
-        .then(tableData=>setTableData(tableData))
+        .then((tableData)=>{setTableData(tableData),setItemId(tableData)})
         .catch(err=>console.log(err))
     }
+
+
+    //set item id
+    const setItemId=(item)=>{
+        let newItemId;
+        if(item.length==0){
+            newItemId="M001";
+        }else{
+            let lastIndex=item.length-1;
+            let lastId=item[lastIndex].itemId;
+
+            let num=lastId.substring(1);
+            num++;
+           
+            if(num<=9){
+                newItemId="M00"+num;
+            }else if(num>9&&num<100){
+                newItemId="M0"+num;
+            }else if(num>=100){
+                newItemId="M"+num;
+            }
+        }
+
+        setId(newItemId);
+        
+    }
+
 
     useEffect(()=>{
         loadTableData();
@@ -76,9 +103,9 @@ export const Item=()=>{
             <form id="itemInputForm">
                 <br />
                 <div className="divFirst">
-                    <div class="mb-3">
+                    <div class="mb-3 col-3">
                         <label for="mobileIdInput" class="form-label name">Mobile ID</label>
-                        <input type="text" class="form-control inputField" id="mobileIdInput" placeholder="M001" name="itemId" value={id} onChange={(e)=>{setId(e.target.value)}}/>
+                        <input type="text" class="form-control inputField fw-bold" id="mobileIdInput" readOnly placeholder="M001" name="itemId" value={id} />
                     </div>
                     <div class="mb-3">
                         <label for="brandInput" class="form-label name">Brand</label>

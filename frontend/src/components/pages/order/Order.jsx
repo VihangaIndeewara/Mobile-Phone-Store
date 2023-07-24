@@ -31,11 +31,37 @@ export const Order=()=>{
    //Order
    const [orderId,setOrderId]=useState()
    
+
+   //customerModel
+
+   const setCustomerId=(customer)=>{
+    let newCusId;
+    if(customer.length==0){
+        newCusId="C001";
+    }else{
+
+        const lastIndex=customer.length-1;
+        const lastId=(customer[lastIndex].cusId);
+
+        let num=lastId.substring(1);
+        num++;
+       
+        if(num<=9){
+            newCusId="C00"+num;
+        }else if(num>9&&num<100){
+            newCusId="C0"+num;
+        }else if(num>=100){
+            newCusId="C"+num;
+        }
+    }
+
+    setCusId(newCusId);
+}
    
     const handleCustomerSave=()=>{
         axios.post('http://localhost:5000/api/customer',
         {cusId:cusId,cusName:cusName,cusContactNo:cusContactNo,cusAddress:cusAddress})
-        .then((res)=>{alert(res.data.message),clearCusInputFiels()})
+        .then((res)=>{alert(res.data.message),clearCusInputFiels(),getCustomerIds()})
         .catch((err)=>{alert(err)})
     }
 
@@ -67,7 +93,7 @@ export const Order=()=>{
 
         let number=lastId.substring(2)
         number++;
-        console.log(number)
+       
 
 
         if(number<=9){
@@ -91,7 +117,7 @@ export const Order=()=>{
     const getCustomerIds=()=>{
         fetch('http://localhost:5000/api/customer')
         .then((res)=>res.json())
-        .then((customerIds)=>setCustomerIds(customerIds))
+        .then((customerIds)=>{setCustomerIds(customerIds),setCustomerId(customerIds)})
         .catch((err)=>console.log(err))
      
     }
@@ -101,7 +127,7 @@ export const Order=()=>{
     const getItemIds=()=>{
         fetch('http://localhost:5000/api/item')
         .then((res)=>res.json())
-        .then((data)=>setItemIds(data))
+        .then((data)=>{setItemIds(data)})
         .catch((err)=>console.log(err))
     }
 
@@ -359,7 +385,7 @@ export const Order=()=>{
 
                                     <div class="mb-3 col">
                                         <label for="customerIDInput" class="form-label name">Customer Id</label>
-                                        <input type="text" class="form-control inputField" id="customerIDInput" placeholder="Ex:- C001" name="cusID" value={cusId} onChange={(e)=>{setCusId(e.target.value)}}  />
+                                        <input type="text" class="form-control inputField fw-bold" id="customerIDInput"name="cusID" readOnly value={cusId}  />
                                         <span class="control-error"></span>
                                     </div>
                                     <div class="mb-3 col">
