@@ -3,6 +3,14 @@ const Order = require("../model/Order");
 const req=require('express/lib/request')
 const res=require('express/lib/response')
 
+const getOrderId=(req,res)=>{
+    Order.find().then((result)=>{
+        return res.status(200).json(result)
+    }).catch((err)=>{
+        return res.status(500).json(err)
+    })
+}
+
 const saveOrder=(req,res)=>{
     const tempOrder=new Order({
         orderId:req.body.orderId,
@@ -28,4 +36,4 @@ const saveOrder=(req,res)=>{
    
 }
 
-module.exports={saveOrder}
+module.exports={getOrderId,saveOrder}

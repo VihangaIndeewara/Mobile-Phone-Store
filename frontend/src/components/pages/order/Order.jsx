@@ -29,7 +29,7 @@ export const Order=()=>{
    const [itemCart,setItemCart]=useState([]);
 
    //Order
-   const [orderId,setOrderId]=useState("OR001")
+   const [orderId,setOrderId]=useState()
    
    
     const handleCustomerSave=()=>{
@@ -48,7 +48,42 @@ export const Order=()=>{
 
     //getOrderId
 
+    const getOrderId=()=>{
+        fetch('http://localhost:5000/api/order')
+        .then((res)=>res.json())
+        .then((id)=>changeOrderId(id))
+        .catch((err)=>console.log(err))
+    }
 
+    const changeOrderId=(obj)=>{
+        let newId;
+        if(obj.length==0){
+             newId="OR001";
+
+        }else{
+        
+        const lastIndex=obj.length-1;
+        const lastId=(obj[lastIndex].orderId)
+
+        let number=lastId.substring(2)
+        number++;
+        console.log(number)
+
+
+        if(number<=9){
+            newId="OR00"+number
+        }else if(number>9&&number<100){
+            newId="OR0"+number
+        }else if(number>=100){
+            newId="OR"+number
+        }
+
+      
+        }
+      setOrderId(newId)
+    }
+    
+   
 
     // get customer ids
   
@@ -70,10 +105,12 @@ export const Order=()=>{
         .catch((err)=>console.log(err))
     }
 
+
+
     useEffect(()=>{
         getCustomerIds();
         getItemIds();
-       
+        getOrderId();
     },[])
 
     //get customer details
@@ -139,13 +176,13 @@ export const Order=()=>{
         setItemQty("")
     }
 
+    const clearCustomerInputFields=()=>{
+       setCustomerDetails({cusName:"",cusContact:""});
+        setItemCart([])
+        setTotal(0)
+    }
+
     //Place Order
-
-    const [date,setDate]=useState(null)
-    const [time,setTime]=useState(null)
-
-  
-
     const handlePlaceOrder=()=>{
         const d=new Date();
         let currentDate=d.toLocaleDateString()
@@ -156,7 +193,7 @@ export const Order=()=>{
 
         axios.post('http://localhost:5000/api/order',
         {orderId:orderId,cusId:cusSelectedValue,mobile:itemCart,totalAmount:total,date:currentDate,time:currentTime})
-        .then((res)=>{alert(res.data.message)})
+        .then((res)=>{alert(res.data.message),getOrderId(),clearCustomerInputFields()})
         .catch((err)=>alert(err))
       
     }
