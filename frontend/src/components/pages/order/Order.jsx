@@ -27,6 +27,9 @@ export const Order=()=>{
 
    const [itemQty,setItemQty]=useState();
    const [itemCart,setItemCart]=useState([]);
+
+   //Order
+   const [orderId,setOrderId]=useState("OR001")
    
    
     const handleCustomerSave=()=>{
@@ -42,6 +45,8 @@ export const Order=()=>{
         setCusContactNo("");
         setCusAddress("");
     }
+
+    //getOrderId
 
 
 
@@ -139,18 +144,21 @@ export const Order=()=>{
     const [date,setDate]=useState(null)
     const [time,setTime]=useState(null)
 
+  
+
     const handlePlaceOrder=()=>{
-        console.log(cusSelectedValue)
-        
         const d=new Date();
-        setDate(d.toLocaleDateString())
+        let currentDate=d.toLocaleDateString()
 
-        setTime(d.toLocaleTimeString())
+        let currentTime=d.toLocaleTimeString()
         
 
-        console.log(itemCart)
-        console.log(time)
-        console.log(date)
+
+        axios.post('http://localhost:5000/api/order',
+        {orderId:orderId,cusId:cusSelectedValue,mobile:itemCart,totalAmount:total,date:currentDate,time:currentTime})
+        .then((res)=>{alert(res.data.message)})
+        .catch((err)=>alert(err))
+      
     }
 
 
@@ -168,7 +176,7 @@ export const Order=()=>{
               
 
                 <label className="lblOrderId" >Order ID : </label>
-                <label className="lblOrderId" >OR001</label>
+                <label className="lblOrderId" >{orderId}</label>
          
                     <div class="mb-3 ">
                         <label for="customerIdCombo" class="form-label name">Customer ID</label>

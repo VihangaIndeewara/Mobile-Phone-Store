@@ -3,6 +3,7 @@ const mongoose=require('mongoose')
 const cors=require('cors')
 const CustomerRoute=require('../backend/routes/CustomerRoute');
 const ItemRoute=require('../backend/routes/ItemRoute');
+const OrderRoute=require('../backend/routes/OrderRoute')
 
 const app=express();
 const PORT = 5000;
@@ -21,4 +22,5 @@ mongoose.connect(
 
 app.use('/api/customer',CustomerRoute)
 app.use('/api/item',ItemRoute)
+app.use('/api/order',OrderRoute)
  
