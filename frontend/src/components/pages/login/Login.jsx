@@ -12,11 +12,26 @@ import { Footer } from '../../footer/Footer';
 
 import { Home } from '../home/Home';
 import { Header } from '../../header/Header';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import axios from 'axios';
 
 
 
 export const Login=()=>{
+
+    const[username,setUsername]=useState("");
+    const[password,setPassword]=useState("");
+
+    const navigate=useNavigate();
+
+    const handleLogIn=()=>{
+       axios.post('http://localhost:5000/api/login/',
+       {username:username,password:password})
+        .then((res)=>{(res.data.message)=="true" ? navigate('/home'):alert(res.data.message)})
+        .catch((err)=>alert(err))
+    }
+
     return(
         <div  >
             <Header/>
@@ -34,30 +49,20 @@ export const Login=()=>{
                         <br />
                         <FormControl>
                             <FormLabel><h6 className='headings'>Username</h6></FormLabel>
-                            <Input
-                            // html input attribute
-                            name="username"
-                            type="text"
-                            placeholder="username"
-                            />
+                            <Input type="text" name='usename' value={username} onChange={(e)=>{setUsername(e.target.value)}}  />
                         </FormControl>
                         <br />
                         <FormControl>
                             <FormLabel><h6 className='headings'>Password</h6></FormLabel>
-                            <Input
-                            // html input attribute
-                            name="password"
-                            type="password"
-                            placeholder="password"
-                            />
+                            <Input type="password" name='password' value={password} onChange={(e)=>setPassword(e.target.value)}/>
                         </FormControl>
                         <br />
                         <br />
 
                        
-                        <Link to={"/home"}>
-                          <Button id='btnLogin'>Log in</Button>
-                        </Link>
+                      
+                          <Button id='btnLogin' onClick={handleLogIn}>Log in</Button>
+                        
 
                     </main>
                   
