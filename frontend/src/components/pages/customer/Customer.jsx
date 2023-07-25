@@ -2,6 +2,8 @@ import "../customer/Customer.css"
 import { NavBar } from "../../navbar/NavBar"
 import { useEffect, useState } from "react"
 import axios from "axios";
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css'; 
 
 export const Customer=()=>{
     const [id,setId]=useState();
@@ -11,35 +13,38 @@ export const Customer=()=>{
 
     const saveCustomer=()=>{
         if(name==""){
-            alert("Please add values...")
+            Swal.fire('Oops...',"Please add values...",'error')
         }else{
             axios.post('http://localhost:5000/api/customer',
             {cusId:id,cusName:name,cusContactNo:conatct,cusAddress:address})
-            .then((res)=>{alert(res.data.message), loadData(),clearInputFiels()})
+            .then((res)=>{Swal.fire('Good job!',res.data.message,'success'), loadData(),clearInputFiels()})
             .catch((err)=>alert(err))
         }    
-       
     }
 
     const updateCustomer=()=>{
         if(name==""){
-            alert("Please select customer...")
+            Swal.fire('Oops...',"Please select customer...",'error')
+        
         }else{
             axios.put('http://localhost:5000/api/customer',
             {cusId:id,cusName:name,cusContactNo:conatct,cusAddress:address})
-            .then((res)=>{alert(res.data.message),loadData(),clearInputFiels()})
-            .catch((err)=>alert(err))
+            .then((res)=>{Swal.fire('Good job!',res.data.message,'success'),loadData(),clearInputFiels()})
+            .catch((err)=>Swal.fire('Bad job!',err,'error'))
         }    
     }
 
+    
+
     const deleteCustomer=()=>{
         if(name==""){
-            alert("Please select customer...")
+            Swal.fire('Oops...',"Please select customer...",'error')
+        
         }else{
             axios.delete(`http://localhost:5000/api/customer/${id}`)
 
-            .then((res)=>{alert(res.data.message),loadData(),clearInputFiels()})
-            .catch((err)=>alert(err))
+            .then((res)=>{Swal.fire('Good job!',res.data.message,'success'),loadData(),clearInputFiels()})
+            .catch((err)=>Swal.fire('Bad job!',err,'error'))
         }
     }
 
