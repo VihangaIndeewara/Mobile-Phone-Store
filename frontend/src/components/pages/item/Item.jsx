@@ -8,16 +8,20 @@ import axios from "axios";
 export const Item=()=>{
 
     const[id,setId]=useState();
-    const[brand,setBrand]=useState();
+    const[brand,setBrand]=useState("");
     const[color,setColor]=useState();
     const[qtyOnHand,setQtyOnHand]=useState();
     const[unitPrice,setUnitPrice]=useState();
 
     const handleSaveItem=()=>{
-        axios.post('http://localhost:5000/api/item',
-        {itemId:id,itemBrand:brand,itemColor:color,itemQtyOnHand:qtyOnHand,itemUnitPrice:unitPrice})
-        .then((res)=>{alert(res.data.message),loadTableData(),clearInputFiels()})
-        .catch((err)=>alert(err))
+        if(brand==""){
+            alert("Please add values...")
+        }else{
+            axios.post('http://localhost:5000/api/item',
+            {itemId:id,itemBrand:brand,itemColor:color,itemQtyOnHand:qtyOnHand,itemUnitPrice:unitPrice})
+            .then((res)=>{alert(res.data.message),loadTableData(),clearInputFiels()})
+            .catch((err)=>alert(err))
+        }
     }
 
     const [tableData,setTableData]=useState([]);
@@ -70,16 +74,25 @@ export const Item=()=>{
     }
 
     const handleUpdateItem=()=>{
-        axios.put('http://localhost:5000/api/item',
-        {itemId:id,itemBrand:brand,itemColor:color,itemQtyOnHand:qtyOnHand,itemUnitPrice:unitPrice})
-        .then((res)=>{alert(res.data.message),loadTableData(),clearInputFiels()})
-        .catch((err)=>alert(err))
+        if(brand==""){
+            alert("Please select item...")
+        }else{
+            axios.put('http://localhost:5000/api/item',
+            {itemId:id,itemBrand:brand,itemColor:color,itemQtyOnHand:qtyOnHand,itemUnitPrice:unitPrice})
+            .then((res)=>{alert(res.data.message),loadTableData(),clearInputFiels()})
+            .catch((err)=>alert(err))
+        }
+        
     }
 
     const handleDeleteItem=()=>{
-        axios.delete(`http://localhost:5000/api/item/${id}`)
-        .then((res)=>{alert(res.data.message),loadTableData(),clearInputFiels()})
-        .catch((err)=>alert(err))
+        if(brand==""){
+            alert("Please select item...")
+        }else{
+            axios.delete(`http://localhost:5000/api/item/${id}`)
+            .then((res)=>{alert(res.data.message),loadTableData(),clearInputFiels()})
+            .catch((err)=>alert(err))
+        }
     }
 
     const clearInputFiels=()=>{

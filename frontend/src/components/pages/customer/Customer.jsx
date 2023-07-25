@@ -5,30 +5,42 @@ import axios from "axios";
 
 export const Customer=()=>{
     const [id,setId]=useState();
-    const [name, setName]=useState();
+    const [name, setName]=useState("");
     const [conatct, setConatct]=useState();
     const [address,setAddress]=useState();
 
     const saveCustomer=()=>{
-        axios.post('http://localhost:5000/api/customer',
-        {cusId:id,cusName:name,cusContactNo:conatct,cusAddress:address})
-        .then((res)=>{alert(res.data.message), loadData(),clearInputFiels()})
-        .catch((err)=>alert(err))
+        if(name==""){
+            alert("Please add values...")
+        }else{
+            axios.post('http://localhost:5000/api/customer',
+            {cusId:id,cusName:name,cusContactNo:conatct,cusAddress:address})
+            .then((res)=>{alert(res.data.message), loadData(),clearInputFiels()})
+            .catch((err)=>alert(err))
+        }    
        
     }
 
     const updateCustomer=()=>{
-        axios.put('http://localhost:5000/api/customer',
-        {cusId:id,cusName:name,cusContactNo:conatct,cusAddress:address})
-        .then((res)=>{alert(res.data.message),loadData(),clearInputFiels()})
-        .catch((err)=>alert(err))
+        if(name==""){
+            alert("Please select customer...")
+        }else{
+            axios.put('http://localhost:5000/api/customer',
+            {cusId:id,cusName:name,cusContactNo:conatct,cusAddress:address})
+            .then((res)=>{alert(res.data.message),loadData(),clearInputFiels()})
+            .catch((err)=>alert(err))
+        }    
     }
 
     const deleteCustomer=()=>{
-        axios.delete(`http://localhost:5000/api/customer/${id}`)
+        if(name==""){
+            alert("Please select customer...")
+        }else{
+            axios.delete(`http://localhost:5000/api/customer/${id}`)
 
-        .then((res)=>{alert(res.data.message),loadData(),clearInputFiels()})
-        .catch((err)=>alert(err))
+            .then((res)=>{alert(res.data.message),loadData(),clearInputFiels()})
+            .catch((err)=>alert(err))
+        }
     }
 
     const clearInputFiels=()=>{

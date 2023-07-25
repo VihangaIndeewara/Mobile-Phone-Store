@@ -25,7 +25,7 @@ export const Order=()=>{
     const [itemSelectedValue,setItemSelectedValue]=useState('');
     const [itemDetails,setItemDetails]=useState({itemBrand:"",itemColor:"",itemQtyOnHand:"",itemUnitPrice:""})
 
-   const [itemQty,setItemQty]=useState();
+   const [itemQty,setItemQty]=useState(0);
    const [itemCart,setItemCart]=useState([]);
 
    //Order
@@ -165,13 +165,18 @@ export const Order=()=>{
 
     const handleAddToCart=()=>{
 
-        const itemAmount=itemDetails.itemUnitPrice*itemQty;
+        if(itemQty==0){
+            alert("Please Input Values")
+        }else if(itemQty!=null){
 
-        const cartDetail={itemId:itemSelectedValue,itemBrand:itemDetails.itemBrand,itemColor:itemDetails.itemColor,itemQty:itemQty,itemUnitPrice:itemDetails.itemUnitPrice,itemAmount:itemAmount};
-        setItemCart(prevArray=>[...prevArray,cartDetail])
-        
-         clearItemInputFields()
-         findTotal(itemAmount)
+            const itemAmount=itemDetails.itemUnitPrice*itemQty;
+
+            const cartDetail={itemId:itemSelectedValue,itemBrand:itemDetails.itemBrand,itemColor:itemDetails.itemColor,itemQty:itemQty,itemUnitPrice:itemDetails.itemUnitPrice,itemAmount:itemAmount};
+            setItemCart(prevArray=>[...prevArray,cartDetail])
+            
+            clearItemInputFields()
+            findTotal(itemAmount)
+        }    
     }
  
 
@@ -210,17 +215,23 @@ export const Order=()=>{
 
     //Place Order
     const handlePlaceOrder=()=>{
-        const d=new Date();
-        let currentDate=d.toLocaleDateString()
+        if(itemCart.length==0){
+            alert("Please Add Items...")
+        }else if(customerDetails.cusName==""){
+            alert("Please Select Customer...")
+        }else{
+            const d=new Date();
+            let currentDate=d.toLocaleDateString()
 
-        let currentTime=d.toLocaleTimeString()
-        
+            let currentTime=d.toLocaleTimeString()
+            
 
 
-        axios.post('http://localhost:5000/api/order',
-        {orderId:orderId,cusId:cusSelectedValue,mobile:itemCart,totalAmount:total,date:currentDate,time:currentTime})
-        .then((res)=>{alert(res.data.message),getOrderId(),clearCustomerInputFields()})
-        .catch((err)=>alert(err))
+            axios.post('http://localhost:5000/api/order',
+            {orderId:orderId,cusId:cusSelectedValue,mobile:itemCart,totalAmount:total,date:currentDate,time:currentTime})
+            .then((res)=>{alert(res.data.message),getOrderId(),clearCustomerInputFields()})
+            .catch((err)=>alert(err))
+        }
       
     }
 
@@ -312,7 +323,7 @@ export const Order=()=>{
                     </div>
          
                 <div id="btnGroup">
-                    <button id="btnAddToCart"  type="button" onClick={handleAddToCart}>Add to Cart</button>
+                    <button id="btnAddToCart"  type="button" onClick={handleAddToCart} >Add to Cart</button>
                  </div>
                  </div>
             </form>
