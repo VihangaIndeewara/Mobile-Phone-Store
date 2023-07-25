@@ -3,6 +3,8 @@ import { Header } from "../../header/Header"
 import { NavBar } from "../../navbar/NavBar"
 import "../order/Order.css"
 import axios from "axios"
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css'; 
 
 
 export const Order=()=>{
@@ -61,8 +63,8 @@ export const Order=()=>{
     const handleCustomerSave=()=>{
         axios.post('http://localhost:5000/api/customer',
         {cusId:cusId,cusName:cusName,cusContactNo:cusContactNo,cusAddress:cusAddress})
-        .then((res)=>{alert(res.data.message),clearCusInputFiels(),getCustomerIds()})
-        .catch((err)=>{alert(err)})
+        .then((res)=>{Swal.fire('Good job!',res.data.message,'success'),clearCusInputFiels(),getCustomerIds()})
+        .catch((err)=>{Swal.fire('Bad job!',err,'error')})
     }
 
     const clearCusInputFiels=()=>{
@@ -165,8 +167,8 @@ export const Order=()=>{
 
     const handleAddToCart=()=>{
 
-        if(itemQty==0){
-            alert("Please Input Values")
+        if(itemQty<=0){
+            Swal.fire('Oops!',"Please Input Values...",'error')
         }else if(itemQty!=null){
 
             const itemAmount=itemDetails.itemUnitPrice*itemQty;
@@ -216,9 +218,9 @@ export const Order=()=>{
     //Place Order
     const handlePlaceOrder=()=>{
         if(itemCart.length==0){
-            alert("Please Add Items...")
+            Swal.fire('Bad job!',"Please Select Items...",'error')
         }else if(customerDetails.cusName==""){
-            alert("Please Select Customer...")
+            Swal.fire('Bad job!',"Please Select Customer...",'error')
         }else{
             const d=new Date();
             let currentDate=d.toLocaleDateString()
@@ -229,8 +231,8 @@ export const Order=()=>{
 
             axios.post('http://localhost:5000/api/order',
             {orderId:orderId,cusId:cusSelectedValue,mobile:itemCart,totalAmount:total,date:currentDate,time:currentTime})
-            .then((res)=>{alert(res.data.message),getOrderId(),clearCustomerInputFields()})
-            .catch((err)=>alert(err))
+            .then((res)=>{Swal.fire('Good job!',res.data.message,'success'),getOrderId(),clearCustomerInputFields()})
+            .catch((err)=>Swal.fire('Bad job!',err,'error'))
         }
       
     }

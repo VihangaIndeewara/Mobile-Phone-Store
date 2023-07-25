@@ -15,7 +15,7 @@ const saveItem=(req,res)=>{
     Item.findOne({itemId:req.body.itemId}).then((response)=>{
         if(response==null){
             tempItem.save().then(()=>{
-                return res.status(200).json({message:"Saved Item!!!"})
+                return res.status(200).json({message:"Saved Item !!!"})
             }).catch((err)=>{
                 return res.status(500).json({message:err})
             })
@@ -50,7 +50,7 @@ const updateItem=(req,res)=>{
             itemUnitPrice:unitPrice
         }
     }).then(()=>{
-        return res.status(200).json({message:"Updated Item!!!"})
+        return res.status(200).json({message:"Updated Item !!!"})
     }).catch((err)=>{
          res.status(500).json({message:err})
     })
@@ -58,7 +58,7 @@ const updateItem=(req,res)=>{
 
 const deleteItem=(req,res)=>{
     Item.findOneAndDelete({itemId:req.params.itemId}).then(()=>{
-        return res.status(200).json({message:"Deleted Item!!!"})
+        return res.status(200).json({message:"Deleted Item !!!"})
     }).catch((err)=>{
         return res.status(500).json({message:err})
     })

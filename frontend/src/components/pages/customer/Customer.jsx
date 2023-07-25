@@ -18,7 +18,7 @@ export const Customer=()=>{
             axios.post('http://localhost:5000/api/customer',
             {cusId:id,cusName:name,cusContactNo:conatct,cusAddress:address})
             .then((res)=>{Swal.fire('Good job!',res.data.message,'success'), loadData(),clearInputFiels()})
-            .catch((err)=>alert(err))
+            .catch((err)=>Swal.fire('Bad job!',err,'error'))
         }    
     }
 
@@ -39,10 +39,8 @@ export const Customer=()=>{
     const deleteCustomer=()=>{
         if(name==""){
             Swal.fire('Oops...',"Please select customer...",'error')
-        
         }else{
             axios.delete(`http://localhost:5000/api/customer/${id}`)
-
             .then((res)=>{Swal.fire('Good job!',res.data.message,'success'),loadData(),clearInputFiels()})
             .catch((err)=>Swal.fire('Bad job!',err,'error'))
         }

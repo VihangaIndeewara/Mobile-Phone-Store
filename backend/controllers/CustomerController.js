@@ -15,7 +15,7 @@ const saveCustomer=(req,res)=>{
     Customer.findOne({cusId:req.body.cusId}).then((response)=>{
         if(response==null){
             tempCustomer.save().then(()=>{
-               return res.status(200).json({message:"Saved Customer!!!"})
+               return res.status(200).json({message:"Saved Customer !!!"})
             }).catch((err) => {
                 res.status(500).json({message: err})
             })
@@ -41,7 +41,7 @@ const updateCustomer= (req,res)=>{
             }
 
         }).then(()=>{
-            return res.status(200).json({message:"Updated Customer!!!"})
+            return res.status(200).json({message:"Updated Customer !!!"})
         }).catch((err) => {
             res.status(500).json({message: err})
         })
@@ -63,7 +63,7 @@ const deleteCustomer=(req,res)=>{
 
     Customer.findOneAndDelete({cusId:req.params.cusId}).then(()=>{
        
-        res.status(200).json({message:"Deleted Customer!!!"})
+        res.status(200).json({message:"Deleted Customer !!!"})
     }).catch((err)=>{
         res.status(500).json({message:err})
     })

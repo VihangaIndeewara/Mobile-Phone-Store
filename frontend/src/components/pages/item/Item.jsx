@@ -4,6 +4,8 @@ import "../item/Item.css"
 import { NavBar } from "../../navbar/NavBar";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css'; 
 
 export const Item=()=>{
 
@@ -15,12 +17,12 @@ export const Item=()=>{
 
     const handleSaveItem=()=>{
         if(brand==""){
-            alert("Please add values...")
+            Swal.fire('Oops...',"Please add values...",'error')
         }else{
             axios.post('http://localhost:5000/api/item',
             {itemId:id,itemBrand:brand,itemColor:color,itemQtyOnHand:qtyOnHand,itemUnitPrice:unitPrice})
-            .then((res)=>{alert(res.data.message),loadTableData(),clearInputFiels()})
-            .catch((err)=>alert(err))
+            .then((res)=>{Swal.fire('Good job!',res.data.message,'success'),loadTableData(),clearInputFiels()})
+            .catch((err)=>Swal.fire('Bad job!',err,'error'))
         }
     }
 
@@ -75,23 +77,23 @@ export const Item=()=>{
 
     const handleUpdateItem=()=>{
         if(brand==""){
-            alert("Please select item...")
+            Swal.fire('Oops...',"Please select item...",'error')
         }else{
             axios.put('http://localhost:5000/api/item',
             {itemId:id,itemBrand:brand,itemColor:color,itemQtyOnHand:qtyOnHand,itemUnitPrice:unitPrice})
-            .then((res)=>{alert(res.data.message),loadTableData(),clearInputFiels()})
-            .catch((err)=>alert(err))
+            .then((res)=>{Swal.fire('Good job!',res.data.message,'success'),loadTableData(),clearInputFiels()})
+            .catch((err)=>Swal.fire('Bad job!',err,'error'))
         }
         
     }
 
     const handleDeleteItem=()=>{
         if(brand==""){
-            alert("Please select item...")
+            Swal.fire('Oops...',"Please select item...",'error')
         }else{
             axios.delete(`http://localhost:5000/api/item/${id}`)
-            .then((res)=>{alert(res.data.message),loadTableData(),clearInputFiels()})
-            .catch((err)=>alert(err))
+            .then((res)=>{Swal.fire('Good job!',res.data.message,'success'),loadTableData(),clearInputFiels()})
+            .catch((err)=>Swal.fire('Bad job!',err,'error'))
         }
     }
 
