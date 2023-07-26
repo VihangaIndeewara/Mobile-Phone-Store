@@ -17,10 +17,10 @@ const saveCustomer=(req,res)=>{
             tempCustomer.save().then(()=>{
                return res.status(200).json({message:"Saved Customer !!!"})
             }).catch((err) => {
-                res.status(500).json({message: err})
+                res.json({message: err})
             })
         }else{
-            res.status(400).json({message:"Customer Id Already Exists..."})
+            res.json({message:"Customer Id Already Exists..."})
             
         }
     })

@@ -26,10 +26,10 @@ const saveOrder=(req,res)=>{
             tempOrder.save().then(()=>{
                 return res.status(200).json({message:"Saved Order!!!"})
             }).catch((err)=>{
-                return res.status(500).json({message:err})
+                return res.json({message:err})
             })
         }else{
-            return res.status(400).json({message:"Order Id Already Exists..."})
+            return res.json({message:"Order Id Already Exists..."})
         }
     })
 

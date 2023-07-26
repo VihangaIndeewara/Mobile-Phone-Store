@@ -5,6 +5,7 @@ import "../order/Order.css"
 import axios from "axios"
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css'; 
+import { json } from "react-router-dom"
 
 
 export const Order=()=>{
@@ -175,13 +176,35 @@ export const Order=()=>{
 
             const cartDetail={itemId:itemSelectedValue,itemBrand:itemDetails.itemBrand,itemColor:itemDetails.itemColor,itemQty:itemQty,itemUnitPrice:itemDetails.itemUnitPrice,itemAmount:itemAmount};
             setItemCart(prevArray=>[...prevArray,cartDetail])
-            
             clearItemInputFields()
             findTotal(itemAmount)
         }    
     }
  
+      //update item qty after add too cart
 
+    const getItemQtyOnHand=()=>{
+        
+        itemCart.forEach((item)=>{
+            
+            fetch(`http://localhost:5000/api/item/${item.itemId}`)
+            .then((res)=>res.json())
+            .then((data)=> updateItemQtyOnHand(item.itemId,data.itemQtyOnHand,item.itemQty))
+         })
+    }
+
+
+    const updateItemQtyOnHand=(itemId,itemQtyOnHand,itemQty)=>{
+        const newItemQtyOnHand=itemQtyOnHand-itemQty;
+
+            axios.put('http://localhost:5000/api/item/updateqtyonhand',
+            {itemId:itemId,itemQtyOnHand:newItemQtyOnHand})
+            .then((res)=>{console.log(res.data.message)})
+            .catch((err)=>console.log(err))
+    }
+
+
+      //find total after add to cart
 
     const [total,setTotal]=useState("0");
    
@@ -227,16 +250,17 @@ export const Order=()=>{
 
             let currentTime=d.toLocaleTimeString()
             
-
-
             axios.post('http://localhost:5000/api/order',
             {orderId:orderId,cusId:cusSelectedValue,mobile:itemCart,totalAmount:total,date:currentDate,time:currentTime})
-            .then((res)=>{Swal.fire('Good job!',res.data.message,'success'),getOrderId(),clearCustomerInputFields()})
+            .then((res)=>{Swal.fire('Good job!',res.data.message,'success'),getItemQtyOnHand(),getOrderId(),clearCustomerInputFields()})
             .catch((err)=>Swal.fire('Bad job!',err,'error'))
         }
-      
+
+        
     }
 
+
+  
 
     return(
         <div className="mainDiv">

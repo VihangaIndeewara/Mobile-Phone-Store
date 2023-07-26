@@ -17,10 +17,10 @@ const saveItem=(req,res)=>{
             tempItem.save().then(()=>{
                 return res.status(200).json({message:"Saved Item !!!"})
             }).catch((err)=>{
-                return res.status(500).json({message:err})
+                return res.json({message:err})
             })
         }else{
-            return res.status(400).json({message:"Item Id Already Exists..."})
+            return res.json({message:"Item Id Already Exists..."})
         }
     })   
 }
@@ -74,7 +74,23 @@ const getItemDetails=(req,res)=>{
     })
 }
 
+//uddate item qtyonhand from given id
+
+const updateQtyOnHand=(req,res)=>{
+    const itemId=req.body.itemId;
+    const itemQtyOnHand=req.body.itemQtyOnHand
+
+    Item.findOneAndUpdate({itemId:itemId},{
+        $set:{
+            itemQtyOnHand:itemQtyOnHand
+        }
+    }).then(()=>{
+       res.json("true")
+    }).catch((err)=>{
+        res.json(err)
+    })
+}
 
 
 
-module.exports={saveItem,getAllItems,updateItem,deleteItem,getItemDetails}
+module.exports={saveItem,getAllItems,updateItem,deleteItem,getItemDetails,updateQtyOnHand}
