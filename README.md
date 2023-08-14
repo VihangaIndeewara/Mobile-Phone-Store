@@ -8,7 +8,7 @@ Mobile Phone Store is a web application for manage their phone shop. All the pro
       <li>Login Interface</li>
       <li>Home Interface</li>
       <li>Customer Manage Interface</li>
-      <li>Item Manage Selection Interface</li>
+      <li>Item Manage Interface</li>
       <li>Purchase Order Interface</li>
        <li>Order Details Interface</li>
     </ul>
